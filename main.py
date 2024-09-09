@@ -1,0 +1,1 @@
+open("input.txt", "w").write("10 10")

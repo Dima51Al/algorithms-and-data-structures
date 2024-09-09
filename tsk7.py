@@ -1,0 +1,18 @@
+import time
+t0 = time.time()
+def f(n):
+    s1 = 1
+    s2 = 1
+    if n == 1 or n == 2:
+        return 1
+    c = 2
+    while c!=n:
+        k = s1
+        s1 = s1+s2
+        s2 = k
+        c+=1
+    return s1%10
+
+s = f(int(open("input.txt").read()))
+open("output.txt", "w").write(str(s))
+print(time.time()-t0, "seconds")
