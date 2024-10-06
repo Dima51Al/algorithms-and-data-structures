@@ -1,7 +1,18 @@
+import random
 import time
-from main import selectionSort
+import psutil
+from main import selectionSort, normVid
 
+
+
+
+array = [random.randint(-10 ** 9, 10 ** 9) for i in range(10**3)]
+array = [0]
+N = len(array)
+string = normVid(array) + "\n" + f"{N}"
+open("input.txt", "w").write(string)
 
 tmp = time.time()
 selectionSort()
 print(time.time() - tmp)
+print(f"Память: {psutil.Process().memory_info().rss / 1024 ** 2:.2f} МБ")

@@ -1,5 +1,8 @@
 import random
 import time
+
+import psutil
+
 from main import insertionSort
 
 
@@ -15,10 +18,12 @@ s = open("input.txt").readlines()[1]
 array = [int(x) for x in s.split()]
 
 tmp = time.time()
-array = [random.randint(-10**9, 10**9) for i in range(10**3)]
+# array = [random.randint(-10**9, 10**9) for i in range(10**3)]
+array = [31, 41, 59, 26, 41, 58]
+N = len(array)
 tmp = time.time()
-string = "1000"+"\n" + normVid(array)
+string = f"{N}"+"\n" + normVid(array)
 open("input.txt", "w").write(string)
+print(f"Память: {psutil.Process().memory_info().rss / 1024 ** 2:.2f} МБ")
 insertionSort()
-
 print(time.time() - tmp, "seconds")
