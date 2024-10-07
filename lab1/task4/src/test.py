@@ -15,18 +15,24 @@ def normVid(array: list) -> str:
 
 
 
-tmp = time.time()
-# array = [random.randint(-10 ** 3, 10 ** 3) for i in range(10 ** 3)]
-array = [0]
+
+array = [random.randint(-10 ** 3, 10 ** 3) for i in range(10 ** 3)]
+print("len array:", len(array))
 tmp = time.time()
 N = len(array)
 string = normVid(array) + "\n" + f"{N}"
-
 open("input.txt", "w").write(string)
-
-
 print(f"Память: {psutil.Process().memory_info().rss / 1024 ** 2:.2f} МБ")
 lineSearch()
-print(f"Память: {psutil.Process().memory_info().rss / 1024 ** 2:.2f} МБ")
+print(time.time() - tmp, "seconds")
+print()
 
+array = [0]
+print("len array:", len(array))
+tmp = time.time()
+N = len(array)
+string = normVid(array) + "\n" + f"{N}"
+open("input.txt", "w").write(string)
+print(f"Память: {psutil.Process().memory_info().rss / 1024 ** 2:.2f} МБ")
+lineSearch()
 print(time.time() - tmp, "seconds")
