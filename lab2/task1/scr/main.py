@@ -2,51 +2,47 @@
 import random
 
 
-def merge(A: list[int], B: list[int]) -> list[int]:
-    array = []
-    la = len(A)
-    lb = len(B)
+def merge(array: list[int], left: int, center: int, right: int) -> list[int]:
 
-    if la * lb == 0:
-        if la == 0:
-            array += B
+    left_array = array[left:center]
+    right_array = array[center:right]
+    id_left = 0
+    id_right = 0
+
+    left_array.append(2**62 - 1)
+    right_array.append(2**62 - 1)
+
+
+    for key in range(left, right):
+        if left_array[id_left] <= right_array[id_right]:
+            array[key] = left_array[id_left]
+            id_left += 1
         else:
-            array += A
-        return array
-
-    while True:
-        if A[0] < B[0]:
-            array.append(A.pop(0))
-            la -= 1
-        else:
-            array.append(B.pop(0))
-            lb -= 1
-        if la * lb == 0:
-            if la == 0:
-                array += B
-            else:
-                array += A
-            return array
+            array[key] = right_array[id_right]
+            id_right += 1
+    return array
 
 
-def merge_sort(array: list[int], p, r) -> list[int]:
-    if p < r:
+def merge_sort(array: list[int], left, right) -> list[int]:
+    if right - left != 1:
+        center = (left+right)//2
 
-        q = (p + r) // 2
-        # print(p, r)
-        if r - p > 1:
-            merge_sort(array[p:q], p, q)
-            merge_sort(array[q:r], q, r)
+        merge_sort(array, left, center)
+        merge_sort(array, center, right)
 
-        print(array[p:q], array[q:r])
-
-        return array
+        merge(array, left, center, right)
 
 
-# A = [1, 3, 5]
-# B = [2, 4]
-# print(merge(A, B))
+    return array
+
+
 
 a = [i for i in range(16, 0, -1)]
-print(merge_sort(a, 1, 16))
+merge_sort(a, 0, 16)
 
+for i in range(1000):
+    a = [random.randint(1, 10) for i in range(32, 0, -1)]
+    merge_sort(a, 0, 32)
+    if a == sorted(a):
+        continue
+    print("asdasd")
