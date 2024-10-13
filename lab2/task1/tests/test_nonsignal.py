@@ -3,7 +3,7 @@ import random
 import time
 import unittest
 
-from lab2.task1.scr.main import merge_sort
+from lab2.task1.scr.main_nonsignal import merge_sort
 
 
 class MergeSortTestCase(unittest.TestCase):
