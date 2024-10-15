@@ -3,28 +3,99 @@ import random
 import time
 import unittest
 
-from lab2.task1.scr.main_nonsignal import merge_sort
+from lab2.task1.src.main_nonsignal import merge_sort
 
+
+def normVid(array: list) -> str:
+    s = ""
+    for i in range(len(array) - 1):
+        s += str(array[i]) + " "
+    s += str(array[-1])
+    return s
 
 class MergeSortTestCase(unittest.TestCase):
 
     def test_merge(self):
-        N = 2 * 10 ** 4
-        array = [random.randint(1, 10**9) for i in range(N)]
+        file = open("C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task1\\src\\input.txt").readlines()[1]
+        array = list(map(int, file.split()))
 
 
         memory_before = memory_profiler.memory_usage()[0]
 
+        sorted_array = merge_sort(array, 0, len(array))
+
         tmp = time.time()
-        self.assertEqual(merge_sort(array, 0, N), sorted(array))
+        self.assertEqual(sorted_array, sorted(array))
+        tmp = time.time() - tmp
+
+        memory_after = memory_profiler.memory_usage()[0]
+
+
+        print("Время выполнения: ", tmp)
+        print("Использование памяти: ", memory_after - memory_before, "МБ")
+
+        with open("C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task1\\src\\output.txt", "w") as file:
+            file.write(normVid(sorted_array))
+    def test_merge_1000(self):
+        N = 1000
+        array = [i for i in range(N, 0, -1)]
+
+
+
+        memory_before = memory_profiler.memory_usage()[0]
+
+        sorted_array = merge_sort(array, 0, len(array))
+
+        tmp = time.time()
+        self.assertEqual(sorted_array, sorted(array))
         tmp = time.time() - tmp
 
         memory_after = memory_profiler.memory_usage()[0]
 
         print()
+        print(N)
         print("Время выполнения: ", tmp)
         print("Использование памяти: ", memory_after - memory_before, "МБ")
 
+    def test_merge_10000(self):
+        N = 10000
+        array = [i for i in range(N, 0, -1)]
+
+
+
+        memory_before = memory_profiler.memory_usage()[0]
+
+        sorted_array = merge_sort(array, 0, len(array))
+
+        tmp = time.time()
+        self.assertEqual(sorted_array, sorted(array))
+        tmp = time.time() - tmp
+
+        memory_after = memory_profiler.memory_usage()[0]
+
+        print()
+        print(N)
+        print("Время выполнения: ", tmp)
+        print("Использование памяти: ", memory_after - memory_before, "МБ")
+
+    def test_merge_100000(self):
+        N = 100000
+        array = [i for i in range(N, 0, -1)]
+
+        memory_before = memory_profiler.memory_usage()[0]
+
+        sorted_array = merge_sort(array, 0, len(array))
+
+        tmp = time.time()
+        self.assertEqual(sorted_array, sorted(array))
+        tmp = time.time() - tmp
+
+        memory_after = memory_profiler.memory_usage()[0]
+
+        print()
+        print(N)
+        print("Время выполнения: ", tmp)
+        print("Использование памяти: ", memory_after - memory_before, "МБ")
 
 if __name__ == '__main__':
     unittest.main()

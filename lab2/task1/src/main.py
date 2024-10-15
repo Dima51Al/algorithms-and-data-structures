@@ -13,6 +13,7 @@ def merge(array: list[int], left: int, center: int, right: int) -> list[int]:
     right_array.append(2**62 - 1)
 
 
+
     for key in range(left, right):
         if left_array[id_left] <= right_array[id_right]:
             array[key] = left_array[id_left]
@@ -37,12 +38,11 @@ def merge_sort(array: list[int], left, right) -> list[int]:
 
 
 
-a = [i for i in range(16, 0, -1)]
-merge_sort(a, 0, 16)
+# a = [i for i in range(16, 0, -1)]
+# merge_sort(a, 0, 16)
 
-for i in range(1000):
-    a = [random.randint(1, 10) for i in range(32, 0, -1)]
-    merge_sort(a, 0, 32)
-    if a == sorted(a):
-        continue
-    print("asdasd")
+
+# a = [random.randint(1, 10) for i in range(10, 0, -1)]
+# a = [9, 7, 5, 8]
+# a = [1, 8, 2, 1, 4, 7, 3, 2, 3, 6]
+# merge_sort(a, 0, len(a))
