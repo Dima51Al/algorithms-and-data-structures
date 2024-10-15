@@ -1,4 +1,4 @@
-def lineSearch() -> None:
+def lineSearch() ->  None:
     file = open("input.txt").readlines()[0]
     elem = int(open("input.txt").readlines()[1])
     array = list(map(int, file.split()))
