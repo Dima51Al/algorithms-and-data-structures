@@ -17,20 +17,20 @@ class MergeSortTestCase(unittest.TestCase):
 
     def test_merge(self):
         file = open(
-            "C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task4\\src\\input.txt", "w")
+            "C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task3\\src\\input.txt", "w")
         file.write("10**5\n" + normVid([i for i in range(10 ** 5, 0, -1)]))
 
         file = open(
-            "C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task4\\src\\input.txt").readlines()[
+            "C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task3\\src\\input.txt").readlines()[
             1]
         array = list(map(int, file.split()))
 
         memory_before = memory_profiler.memory_usage()[0]
 
-        sorted_array = merge_sort(array, 0, len(array))
+        inversion_count = merge_sort(array, 0, len(array))
 
         tmp = time.time()
-        self.assertEqual(merge_sort(array, 0, len(array)), (len(array) * (len(array) - 1)) // 2)
+        self.assertEqual(inversion_count, (len(array) * (len(array) - 1)) // 2)
         tmp = time.time() - tmp
 
         memory_after = memory_profiler.memory_usage()[0]
@@ -38,9 +38,9 @@ class MergeSortTestCase(unittest.TestCase):
         print("Время выполнения: ", tmp)
         print("Использование памяти: ", memory_after - memory_before, "МБ")
 
-        with open("C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task4 \\src\\output.txt",
+        with open("C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task3\\src\\output.txt",
                   "w") as file:
-            file.write(normVid(sorted_array))
+            file.write(str(inversion_count))
 
     def test_merge_1000(self):
         N = 1000
@@ -48,16 +48,16 @@ class MergeSortTestCase(unittest.TestCase):
 
         memory_before = memory_profiler.memory_usage()[0]
 
-        sorted_array = merge_sort(array, 0, len(array))
+        inversion_count = merge_sort(array, 0, len(array))
 
         tmp = time.time()
-        self.assertEqual(sorted_array, sorted(array))
+        self.assertEqual(inversion_count, (len(array) * (len(array) - 1)) // 2)
         tmp = time.time() - tmp
 
         memory_after = memory_profiler.memory_usage()[0]
 
         print()
-        print(N)
+        print(N, inversion_count)
         print("Время выполнения: ", tmp)
         print("Использование памяти: ", memory_after - memory_before, "МБ")
 
@@ -67,16 +67,16 @@ class MergeSortTestCase(unittest.TestCase):
 
         memory_before = memory_profiler.memory_usage()[0]
 
-        sorted_array = merge_sort(array, 0, len(array))
+        inversion_count = merge_sort(array, 0, len(array))
 
         tmp = time.time()
-        self.assertEqual(sorted_array, sorted(array))
+        self.assertEqual(inversion_count, (len(array) * (len(array) - 1)) // 2)
         tmp = time.time() - tmp
 
         memory_after = memory_profiler.memory_usage()[0]
 
         print()
-        print(N)
+        print(N, inversion_count)
         print("Время выполнения: ", tmp)
         print("Использование памяти: ", memory_after - memory_before, "МБ")
 
@@ -95,7 +95,7 @@ class MergeSortTestCase(unittest.TestCase):
         memory_after = memory_profiler.memory_usage()[0]
 
         print()
-        print(N)
+        print(N, inversion_count)
         print("Время выполнения: ", tmp)
         print("Использование памяти: ", memory_after - memory_before, "МБ")
 

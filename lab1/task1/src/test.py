@@ -1,9 +1,6 @@
 import random
 import time
-import psutil
 from main import insertionSort
-from memory_profiler import memory_usage
-
 import psutil
 
 def normVid(array: list) -> str:
@@ -16,8 +13,6 @@ def normVid(array: list) -> str:
 
 
 array = [random.randint(-10 ** 9, 10 ** 9) for i in range(10**3)]
-
-
 
 print("len array:", len(array))
 tmp = time.time()
