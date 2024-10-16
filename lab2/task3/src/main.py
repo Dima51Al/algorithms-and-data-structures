@@ -14,9 +14,8 @@ def merge(array: list[int], left: int, center: int, right: int) -> int:
         if left_array[id_left] <= right_array[id_right]:
             array[key] = left_array[id_left]
             id_left += 1
-            res += (key - center)
         else:
-            res += (center - key)
+            res += (center - id_left - left)
 
 
             array[key] = right_array[id_right]
@@ -26,7 +25,7 @@ def merge(array: list[int], left: int, center: int, right: int) -> int:
 
 
 def merge_sort(array: list[int], left, right) -> int:
-    if right - left != 1:
+    if right - left > 1:
         center = (left + right) // 2
 
         res = merge_sort(array, left, center)
@@ -36,4 +35,11 @@ def merge_sort(array: list[int], left, right) -> int:
 
     return 0
 
-
+#def f(N):
+#    print(merge_sort([i for i in range(1, N+1)], 0, N), end=" ")
+#    print(merge_sort([i for i in range(N, 0, -1)], 0, N))
+#
+#for n in range(0, 32+1, 4):
+#    f(n)
+#    print(0, n*(n-1)//2)
+#    print()
