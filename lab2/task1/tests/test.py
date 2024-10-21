@@ -2,7 +2,7 @@ import memory_profiler
 import random
 import time
 import unittest
-
+from utils import *
 from lab2.task1.src.main import merge_sort
 
 
@@ -17,85 +17,38 @@ def normVid(array: list) -> str:
 class MergeSortTestCase(unittest.TestCase):
 
     def test_merge(self):
-        file = open(
-            "C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task1\\src\\input.txt").readlines()[
-            1]
+        path = "C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task1\\txtf"
+        path_input = path + "\\input.txt"
+        path_output = path + "\\output.txt"
+
+
+        file = read_file_line(path_input, 1)
         array = list(map(int, file.split()))
-
-        memory_before = memory_profiler.memory_usage()[0]
-
         sorted_array = merge_sort(array, 0, len(array))
 
-        tmp = time.time()
-        self.assertEqual(sorted_array, sorted(array))
-        tmp = time.time() - tmp
-
-        memory_after = memory_profiler.memory_usage()[0]
-
-        print("Время выполнения: ", tmp)
-        print("Использование памяти: ", memory_after - memory_before, "МБ")
-
-        with open("C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task1\\src\\output.txt",
-                  "w") as file:
-            file.write(normVid(sorted_array))
+        test_base(self.assertEqual, sorted_array, sorted(array))
+        write_file(path_output, normVid(sorted_array))
 
     def test_merge_1000(self):
         N = 1000
         array = [i for i in range(N, 0, -1)]
-
-        memory_before = memory_profiler.memory_usage()[0]
-
         sorted_array = merge_sort(array, 0, len(array))
+        test_base(self.assertEqual, sorted_array, sorted(array))
 
-        tmp = time.time()
-        self.assertEqual(sorted_array, sorted(array))
-        tmp = time.time() - tmp
-
-        memory_after = memory_profiler.memory_usage()[0]
-
-        print()
-        print(N)
-        print("Время выполнения: ", tmp)
-        print("Использование памяти: ", memory_after - memory_before, "МБ")
 
     def test_merge_10000(self):
         N = 10000
         array = [i for i in range(N, 0, -1)]
 
-        memory_before = memory_profiler.memory_usage()[0]
-
         sorted_array = merge_sort(array, 0, len(array))
-
-        tmp = time.time()
-        self.assertEqual(sorted_array, sorted(array))
-        tmp = time.time() - tmp
-
-        memory_after = memory_profiler.memory_usage()[0]
-
-        print()
-        print(N)
-        print("Время выполнения: ", tmp)
-        print("Использование памяти: ", memory_after - memory_before, "МБ")
+        test_base(self.assertEqual, sorted_array, sorted(array))
 
     def test_merge_100000(self):
         N = 100000
         array = [i for i in range(N, 0, -1)]
 
-        memory_before = memory_profiler.memory_usage()[0]
-
         sorted_array = merge_sort(array, 0, len(array))
-
-        tmp = time.time()
-        self.assertEqual(sorted_array, sorted(array))
-        print(sorted_array[:10])
-        tmp = time.time() - tmp
-
-        memory_after = memory_profiler.memory_usage()[0]
-
-        print()
-        print(N)
-        print("Время выполнения: ", tmp)
-        print("Использование памяти: ", memory_after - memory_before, "МБ")
+        test_base(self.assertEqual, sorted_array, sorted(array))
 
 
 if  __name__ == '__main__':

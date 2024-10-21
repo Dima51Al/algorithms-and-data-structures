@@ -8,7 +8,6 @@ def normVid(array: list) -> str:
 
 def insertionSort() -> None:
     file = open("input.txt").readlines()[1]
-    #N = int(open("input.txt").readlines()[0])
     array = list(map(int, file.split()))
     length = len(array)
     for index in range(1, length):

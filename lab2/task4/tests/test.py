@@ -1,57 +1,56 @@
-import memory_profiler
-import random
-import time
 import unittest
-
+from utils import *
 from lab2.task4.src.main import binSearch
 
 
-class testBinSearch(unittest.TestCase):
+def normVid(array: list) -> str:
+    s = ""
+    for i in range(len(array) - 1):
+        s += str(array[i]) + " "
+    s += str(array[-1])
+    return s
 
-    def test_base(self):
-        file = open(
-            "C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task4\\src\\input.txt").readlines()[
-            1]
-        array = list(map(int, file.split()))
 
-        file = open(
-            "C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task4\\src\\input.txt").readlines()[
-            3]
-        values = list(map(int, file.split()))
+class MergeSortTestCase(unittest.TestCase):
 
-        memory_before = memory_profiler.memory_usage()[0]
+    def test_merge(self):
+        path = "C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task4\\txtf"
+        path_input = path + "\\input.txt"
+        path_output = path + "\\output.txt"
 
-        final_array = [binSearch(array, i) for i in values]
 
-        tmp = time.time()
-        self.assertEqual(final_array, [2, 0, -1, 0, -1])
-        tmp = time.time() - tmp
+        file_0 = read_file_line(path_input, 1)
+        file_1 = read_file_line(path_input, 3)
+        array = list(map(int, file_0.split()))
+        values = list(map(int, file_1.split()))
+        sorted_array = [binSearch(array, i) for i in values]
 
-        memory_after = memory_profiler.memory_usage()[0]
 
-        print()
-        print("Время выполнения: ", tmp)
-        print("Использование памяти: ", memory_after - memory_before, "МБ")
+        test_base(self.assertEqual, sorted_array, [2, 0, -1, 0, -1])
+        write_file(path_output, normVid(sorted_array))
 
-    def test_100000(self):
-        N = 10**5
+    def test_merge_1000(self):
+        N = 1000
         array = [i for i in range(0, N)]
         values = [i for i in range(0, N, 20)]
+        sorted_array = [binSearch(array, i) for i in values]
+        test_base(self.assertEqual, sorted_array, [i for i in range(0, N, 20)])
 
-        memory_before = memory_profiler.memory_usage()[0]
 
-        final_array = [binSearch(array, i) for i in values]
+    def test_merge_10000(self):
+        N = 10000
+        array = [i for i in range(0, N)]
+        values = [i for i in range(0, N, 20)]
+        sorted_array = [binSearch(array, i) for i in values]
+        test_base(self.assertEqual, sorted_array, [i for i in range(0, N, 20)])
 
-        tmp = time.time()
-        self.assertEqual(final_array, values)
-        tmp = time.time() - tmp
+    def test_merge_100000(self):
+        N = 100000
+        array = [i for i in range(0, N)]
+        values = [i for i in range(0, N, 20)]
+        sorted_array = [binSearch(array, i) for i in values]
+        test_base(self.assertEqual, sorted_array, [i for i in range(0, N, 20)])
 
-        memory_after = memory_profiler.memory_usage()[0]
 
-        print()
-        print(N)
-        print("Время выполнения: ", tmp)
-        print("Использование памяти: ", memory_after - memory_before, "МБ")
-
-if __name__ == '__main__':
+if  __name__ == '__main__':
     unittest.main()

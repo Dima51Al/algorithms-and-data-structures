@@ -34,12 +34,3 @@ def merge_sort(array: list[int], left, right) -> int:
         return res
 
     return 0
-
-#def f(N):
-#    print(merge_sort([i for i in range(1, N+1)], 0, N), end=" ")
-#    print(merge_sort([i for i in range(N, 0, -1)], 0, N))
-#
-#for n in range(0, 32+1, 4):
-#    f(n)
-#    print(0, n*(n-1)//2)
-#    print()

@@ -1,6 +1,3 @@
-import random
-
-
 def binSearch(array: list[int], number: int):
     left = 0
     right = len(array)
@@ -14,3 +11,4 @@ def binSearch(array: list[int], number: int):
     if array[left] == number:
         return left
     return -1
+

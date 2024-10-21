@@ -1,7 +1,3 @@
-import random
-import time
-
-
 def merge(array: list[int], left: int, center: int, right: int) -> list[int]:
     left_array = array[left:center]
     right_array = array[center:right]
@@ -69,9 +65,9 @@ def majority(array: list[int]):
 
 
 def main():
-    with open("input.txt") as file:
+    with open("../txtf/input.txt") as file:
         array = list(map(int, file.readlines()[1].split()))
         file.close()
 
-    with open("output.txt", "w") as file:
+    with open("../txtf/output.txt", "w") as file:
         file.write(str(majority(array)))
