@@ -64,10 +64,3 @@ def majority(array: list[int]):
     return 1
 
 
-def main():
-    with open("../txtf/input.txt") as file:
-        array = list(map(int, file.readlines()[1].split()))
-        file.close()
-
-    with open("../txtf/output.txt", "w") as file:
-        file.write(str(majority(array)))

@@ -25,8 +25,7 @@ class MergeSortTestCase(unittest.TestCase):
         values = list(map(int, file_1.split()))
         sorted_array = [binSearch(array, i) for i in values]
 
-
-        test_base(self.assertEqual, sorted_array, [2, 0, -1, 0, -1])
+        base_test(self.assertEqual, sorted_array, [2, 0, -1, 0, -1])
         write_file(path_output, normVid(sorted_array))
 
     def test_merge_1000(self):
@@ -34,7 +33,7 @@ class MergeSortTestCase(unittest.TestCase):
         array = [i for i in range(0, N)]
         values = [i for i in range(0, N, 20)]
         sorted_array = [binSearch(array, i) for i in values]
-        test_base(self.assertEqual, sorted_array, [i for i in range(0, N, 20)])
+        base_test(self.assertEqual, sorted_array, [i for i in range(0, N, 20)])
 
 
     def test_merge_10000(self):
@@ -42,14 +41,14 @@ class MergeSortTestCase(unittest.TestCase):
         array = [i for i in range(0, N)]
         values = [i for i in range(0, N, 20)]
         sorted_array = [binSearch(array, i) for i in values]
-        test_base(self.assertEqual, sorted_array, [i for i in range(0, N, 20)])
+        base_test(self.assertEqual, sorted_array, [i for i in range(0, N, 20)])
 
     def test_merge_100000(self):
         N = 100000
         array = [i for i in range(0, N)]
         values = [i for i in range(0, N, 20)]
         sorted_array = [binSearch(array, i) for i in values]
-        test_base(self.assertEqual, sorted_array, [i for i in range(0, N, 20)])
+        base_test(self.assertEqual, sorted_array, [i for i in range(0, N, 20)])
 
 
 if  __name__ == '__main__':

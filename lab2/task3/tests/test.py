@@ -25,7 +25,7 @@ class MergeSortTestCase(unittest.TestCase):
         array = list(map(int, file.split()))
 
         num = merge_sort(array, 0, len(array))
-        test_base(self.assertEqual, num, 0)
+        base_test(self.assertEqual, num, 0)
 
         write_file(path_output, str(num))
 
@@ -34,7 +34,7 @@ class MergeSortTestCase(unittest.TestCase):
         array = [i for i in range(N, 0, -1)]
 
         num = merge_sort(array, 0, len(array))
-        test_base(self.assertEqual, num, 499500)
+        base_test(self.assertEqual, num, 499500)
 
 
 
@@ -43,14 +43,14 @@ class MergeSortTestCase(unittest.TestCase):
         array = [i for i in range(N, 0, -1)]
 
         num = merge_sort(array, 0, len(array))
-        test_base(self.assertEqual, num, 49995000)
+        base_test(self.assertEqual, num, 49995000)
 
     def test_merge_100000(self):
         N = 100000
         array = [i for i in range(N, 0, -1)]
 
         num = merge_sort(array, 0, len(array))
-        test_base(self.assertEqual, num, 4999950000)
+        base_test(self.assertEqual, num, 4999950000)
 
 
 if __name__ == '__main__':
