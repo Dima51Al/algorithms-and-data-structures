@@ -17,7 +17,7 @@ def merge(array: list[int], left: int, center: int, right: int) -> list[int]:
         else:
             array[key] = right_array[id_right]
             id_right += 1
-    with open("output.txt", "a") as file:
+    with open("../txtf/output.txt", "a") as file:
         file.write(f'{left + 1} {right} {array[left]} {array[right - 1]}\n')
         file.close()
     return array
@@ -38,7 +38,7 @@ def merge_sort(array: list[int], left, right) -> list[int]:
 N = 10 ** 5
 # array = [randint(1, 10**9) for i in range(N)]
 array = [1, 8, 2, 1, 4, 7, 3, 2, 3, 6]
-with open("output.txt", "w") as file:
+with open("../txtf/output.txt", "w") as file:
     file.write("")
     file.close()
 
@@ -52,6 +52,6 @@ def normVid(array: list) -> str:
 
 
 a = merge_sort(array, 0, len(array))
-with open("output.txt", "a") as file:
+with open("../txtf/output.txt", "a") as file:
     file.write(normVid(a))
     file.close()

@@ -1,48 +1,40 @@
-import memory_profiler
-import random
-import time
 import unittest
+from utils import *
+from lab2.task5.src.main import *
 
-from lab2.task5.src.main import majority
 
 
-class testBinSearch(unittest.TestCase):
 
-    def test_base(self):
-        path = "C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task5\\src\\input.txt"
-        file = open(path).readlines()[1]
+
+class MergeSortTestCase(unittest.TestCase):
+
+    def test_majority_from_file(self):
+        path = "C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task5\\txtf"
+        path_input = path + "\\input.txt"
+        path_output = path + "\\output.txt"
+
+
+        file = read_file_line(path_input, 1)
         array = list(map(int, file.split()))
+        self.assertEqual(first=base_test(majority, array), second=1)
+        write_file(path_output, str(majority(array)))
 
-        memory_before = memory_profiler.memory_usage()[0]
-
-        tmp = time.time()
-        self.assertEqual(majority(array), 1)
-        tmp = time.time() - tmp
-
-        memory_after = memory_profiler.memory_usage()[0]
-
-        print()
-        print("Время выполнения: ", tmp)
-        print("Использование памяти: ", memory_after - memory_before, "МБ")
-
-    def test_100000(self):
-        N = 10 ** 5
-        array = [i for i in range(0, N)]
-        values = [i for i in range(0, N, 20)]
-
-        memory_before = memory_profiler.memory_usage()[0]
-
-        tmp = time.time()
-        self.assertEqual(majority(array), 0)
-        memory_after = memory_profiler.memory_usage()[0]
-        tmp = time.time() - tmp
+    def test_majority_from_1000(self):
+        N = 1000
+        array = [i for i in range(N, 0, -1)]
+        self.assertEqual(first=base_test(majority, array), second=0)
 
 
+    def test_majority_from_10000(self):
+        N = 10000
+        array = [i for i in range(N, 0, -1)]
+        self.assertEqual(first=base_test(majority, array), second=0)
 
-        print()
-        print(N)
-        print("Время выполнения: ", tmp)
-        print("Использование памяти: ", memory_after - memory_before, "МБ")
+    def test_majority_from_100000(self):
+        N = 100000
+        array = [i for i in range(N, 0, -1)]
+
+        self.assertEqual(first=base_test(majority, array), second=0)
 
 
 if __name__ == '__main__':

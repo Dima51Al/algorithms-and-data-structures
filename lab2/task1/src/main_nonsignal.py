@@ -1,7 +1,3 @@
-# merge
-import random
-
-
 def merge(array: list[int], left: int, center: int, right: int) -> list[int]:
 
     left_array = array[left:center]
@@ -36,16 +32,3 @@ def merge_sort(array: list[int], left, right) -> list[int]:
 
 
     return array
-
-
-
-# a = [i for i in range(16, 0, -1)]
-# merge_sort(a, 0, 16)
-#
-# for i in range(1000):
-#     a = [random.randint(1, 10) for i in range(32, 0, -1)]
-#     merge_sort(a, 0, 32)
-#     if a == sorted(a):
-#         continue
-#     print("asdasd")
-
