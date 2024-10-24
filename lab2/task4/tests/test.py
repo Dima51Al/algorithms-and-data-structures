@@ -1,6 +1,6 @@
 import unittest
 from utils import *
-from lab2.task4.src.main import binSearch
+from lab2.task4.src.main import *
 
 
 def normVid(array: list) -> str:
@@ -13,7 +13,7 @@ def normVid(array: list) -> str:
 
 class MergeSortTestCase(unittest.TestCase):
 
-    def test_merge(self):
+    def test_binsearch_from_file(self):
         path = "C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task4\\txtf"
         path_input = path + "\\input.txt"
         path_output = path + "\\output.txt"
@@ -23,33 +23,32 @@ class MergeSortTestCase(unittest.TestCase):
         file_1 = read_file_line(path_input, 3)
         array = list(map(int, file_0.split()))
         values = list(map(int, file_1.split()))
-        sorted_array = [binSearch(array, i) for i in values]
 
-        base_test(self.assertEqual, sorted_array, [2, 0, -1, 0, -1])
-        write_file(path_output, normVid(sorted_array))
+        self.assertEqual(first=base_test(array_bin_search, array, values), second=[2, 0, -1, 0, -1])
 
-    def test_merge_1000(self):
+        write_file(path_output, normVid(array_bin_search(array, values)))
+
+    def test_binsearch_from_array_1000(self):
         N = 1000
         array = [i for i in range(0, N)]
         values = [i for i in range(0, N, 20)]
-        sorted_array = [binSearch(array, i) for i in values]
-        base_test(self.assertEqual, sorted_array, [i for i in range(0, N, 20)])
+        self.assertEqual(first=base_test(array_bin_search, array, values), second=[i for i in range(0, N, 20)])
 
+        
 
-    def test_merge_10000(self):
+    def test_binsearch_from_array_10000(self):
         N = 10000
         array = [i for i in range(0, N)]
         values = [i for i in range(0, N, 20)]
-        sorted_array = [binSearch(array, i) for i in values]
-        base_test(self.assertEqual, sorted_array, [i for i in range(0, N, 20)])
+        self.assertEqual(first=base_test(array_bin_search, array, values), second=[i for i in range(0, N, 20)])
 
-    def test_merge_100000(self):
+
+    def test_binsearch_from_array_100000(self):
         N = 100000
         array = [i for i in range(0, N)]
         values = [i for i in range(0, N, 20)]
-        sorted_array = [binSearch(array, i) for i in values]
-        base_test(self.assertEqual, sorted_array, [i for i in range(0, N, 20)])
+        self.assertEqual(first=base_test(array_bin_search, array, values), second=[i for i in range(0, N, 20)])
 
 
-if  __name__ == '__main__':
+if __name__ == '__main__':
     unittest.main()

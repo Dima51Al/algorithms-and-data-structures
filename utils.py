@@ -18,12 +18,13 @@ def read_file_line(path: str, num: int) -> str:
     return line
 
 
-def base_test(function, first, second):
+def base_test(function, *args):
+    """функция, аргумент1, аргумент2..."""
     memory_before = memory_profiler.memory_usage()[0]
 
     tmp = time.time()
 
-    function(first, second)
+    answer = function(*args)
 
     tmp = time.time() - tmp
 
@@ -32,7 +33,7 @@ def base_test(function, first, second):
     print()
     print("Время выполнения: ", tmp)
     print("Использование памяти: ", memory_after - memory_before, "МБ")
-
+    return answer
 
 def min_max(array: list[int], mm: int) -> list[int]:
     """ массив; 1 если мин, -1 если макс | выход: [элемент, индекс]"""
