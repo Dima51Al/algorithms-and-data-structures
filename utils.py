@@ -4,14 +4,22 @@ import memory_profiler
 
 path_input = "../txtf/input.txt"
 path_output = "../txtf/output.txt"
+
+
 def write_file(string: str) -> None:
-    with open(path_input, "w", encoding="utf-8") as file:
+    with open(path_output, "w", encoding="utf-8") as file:
         file.write(string)
-
-
 def read_file() -> str:
     with open(path_output, "r") as file:
         return file.read()
+def normVid(array: list) -> str:
+    s = ""
+    for i in range(len(array) - 1):
+        s += str(array[i]) + " "
+    s += str(array[-1])
+    return s
+
+
 
 
 def read_file_line(path: str, num: int) -> str:
