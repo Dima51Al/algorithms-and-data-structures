@@ -1,14 +1,4 @@
-def normVid(array: list) -> str:
-    s = ""
-    for i in range(len(array) - 1):
-        s += str(array[i]) + " "
-    s += str(array[-1])
-    return s
-
-
-def insertionSort() -> None:
-    file = open("../txtf/input.txt").readlines()[1]
-    array = list(map(int, file.split()))
+def insertionSort(array) -> None:
     length = len(array)
     for index in range(1, length):
         tmp = index
@@ -17,3 +7,4 @@ def insertionSort() -> None:
             tmp -= 1
             if tmp == 0:
                 break
+    return array
