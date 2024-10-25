@@ -1,7 +1,5 @@
 import copy
 from utils import *
-
-
 def selectionSort(array) -> list[int]:
 
     array = copy.deepcopy(array)

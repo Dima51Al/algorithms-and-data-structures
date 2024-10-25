@@ -1,6 +1,7 @@
 import unittest
 from utils import *
 from lab1.task3.src.main import insertionSort
+
 class MergeSortTestCase(unittest.TestCase):
 
     def test_mergesort_from_file(self):
