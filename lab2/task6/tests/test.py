@@ -15,14 +15,11 @@ def normVid(array: list) -> str:
 class MergeSortTestCase(unittest.TestCase):
 
     def test_file_input(self):
-        path = "C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task6\\txtf"
-        path_input = path + "\\input.txt"
-        path_output = path + "\\output.txt"
 
         array = []
         for i in open(path_input, "r", encoding="utf-8").readlines():
             array.append([i.split()[0], float(i.split()[1].replace(",", "."))])
-        write_file(path_output, max_delta(array))
+        write_file(max_delta(array))
 
         self.assertEqual(base_test(max_delta, array), "купить 16.07.1980 продать 16.03.1981 получить 55.400000000000006")
 

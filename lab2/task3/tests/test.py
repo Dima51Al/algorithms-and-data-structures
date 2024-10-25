@@ -15,10 +15,6 @@ def normVid(array: list) -> str:
 class MergeSortTestCase(unittest.TestCase):
 
     def test_mergesort_from_file(self):
-        path = "C:\\Users\\User\\PycharmProjects\\algorithms-and-data-structures\\lab2\\task1\\txtf"
-        path_input = path + "\\input.txt"
-        path_output = path + "\\output.txt"
-
 
         file = read_file_line(path_input, 1)
 
@@ -27,7 +23,7 @@ class MergeSortTestCase(unittest.TestCase):
         self.assertEqual(base_test(merge_sort, array, 0, len(array)), 0)
 
 
-        write_file(path_output, str(merge_sort(array, 0, len(array))))
+        write_file(str(merge_sort(array, 0, len(array))))
 
     def test_mergesort_from_array_1000(self):
         N = 1000
