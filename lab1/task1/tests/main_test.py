@@ -3,14 +3,6 @@ from utils import *
 from lab1.task1.src.main import insertionSort
 
 
-def normVid(array: list) -> str:
-    s = ""
-    for i in range(len(array) - 1):
-        s += str(array[i]) + " "
-    s += str(array[-1])
-    return s
-
-
 class MergeSortTestCase(unittest.TestCase):
 
     def test_mergesort_from_file(self):

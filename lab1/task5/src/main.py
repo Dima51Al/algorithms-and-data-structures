@@ -1,8 +1,5 @@
 import copy
-
 from utils import *
-
-
 def selectionSort(array) -> list[int]:
 
     array = copy.deepcopy(array)
@@ -12,7 +9,3 @@ def selectionSort(array) -> list[int]:
         sorted_array.append(array.pop(min_max(array, 1)[1]))
 
     return sorted_array
-
-
-print(selectionSort([3, 2, 1]))
-print(base_test(selectionSort, [3, 2, 1]))

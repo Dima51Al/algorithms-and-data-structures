@@ -1,6 +1,3 @@
-from utils import normVid
-
-
 def insertionSort(array) -> list[list]:
     length = len(array)
     b = []
