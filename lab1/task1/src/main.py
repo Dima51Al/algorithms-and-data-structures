@@ -7,7 +7,7 @@ def normVid(array: list) -> str:
 
 
 def insertionSort() -> None:
-    file = open("input.txt").readlines()[1]
+    file = open("../txtf/input.txt").readlines()[1]
     array = list(map(int, file.split()))
     length = len(array)
     for index in range(1, length):
@@ -17,4 +17,3 @@ def insertionSort() -> None:
             tmp -= 1
             if tmp == 0:
                 break
-    open("output.txt", "w").write(normVid(array))

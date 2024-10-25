@@ -7,7 +7,7 @@ def normVid(array: list) -> str:
 
 
 def insertionSort() -> None:
-    file = open("input.txt").readlines()[1]
+    file = open("../txtf/input.txt").readlines()[1]
     array = list(map(int, file.split()))
     length = len(array)
     b = []
@@ -20,4 +20,4 @@ def insertionSort() -> None:
                 break
         b.append(tmp + 1)
         string_output = normVid(b) + "\n" + normVid(array)
-    open("output.txt", "w").write(string_output)
+    open("../txtf/output.txt", "w").write(string_output)

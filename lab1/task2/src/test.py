@@ -14,13 +14,13 @@ def normVid(array: list) -> str:
     return s
 
 
-s = open("input.txt").readlines()[1]
+s = open("../txtf/input.txt").readlines()[1]
 array = [int(x) for x in s.split()]
 print("len array:", len(array))
 N = len(array)
 tmp = time.time()
 string = f"{N}"+"\n" + normVid(array)
-open("input.txt", "w").write(string)
+open("../txtf/input.txt", "w").write(string)
 print(f"Память: {psutil.Process().memory_info().rss / 1024 ** 2:.2f} МБ")
 insertionSort()
 print(time.time() - tmp, "seconds")
@@ -31,7 +31,7 @@ print("len array:", len(array))
 N = len(array)
 tmp = time.time()
 string = f"{N}"+"\n" + normVid(array)
-open("input.txt", "w").write(string)
+open("../txtf/input.txt", "w").write(string)
 print(f"Память: {psutil.Process().memory_info().rss / 1024 ** 2:.2f} МБ")
 insertionSort()
 print(time.time() - tmp, "seconds")
@@ -43,7 +43,7 @@ print("len array:", len(array))
 N = len(array)
 tmp = time.time()
 string = f"{N}"+"\n" + normVid(array)
-open("input.txt", "w").write(string)
+open("../txtf/input.txt", "w").write(string)
 print(f"Память: {psutil.Process().memory_info().rss / 1024 ** 2:.2f} МБ")
 insertionSort()
 print(time.time() - tmp, "seconds")

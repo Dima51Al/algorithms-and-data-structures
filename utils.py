@@ -2,14 +2,15 @@ import time
 
 import memory_profiler
 
-
-def write_file(path: str, string: str) -> None:
-    with open(path, "w", encoding="utf-8") as file:
+path_input = "../txtf/input.txt"
+path_output = "../txtf/output.txt"
+def write_file(string: str) -> None:
+    with open(path_input, "w", encoding="utf-8") as file:
         file.write(string)
 
 
-def read_file(path: str) -> str:
-    with open(path, "r") as file:
+def read_file() -> str:
+    with open(path_output, "r") as file:
         return file.read()
 
 

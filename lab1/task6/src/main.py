@@ -7,7 +7,7 @@ def normVid(array: list) -> str:
 
 
 def Bubble_sort():
-    file = open("input.txt").readlines()[1]
+    file = open("../txtf/input.txt").readlines()[1]
     array = list(map(int, file.split()))
     for i in range(len(array)):
         for j in range(len(array)-1, i, -1):
@@ -18,4 +18,4 @@ def Bubble_sort():
 
                 array[j-1], array[j] = tmp_2, tmp_1
             # print(array)
-    open("output.txt", "w").write(normVid(array))
+    open("../txtf/output.txt", "w").write(normVid(array))

@@ -1,0 +1,2 @@
+PATH = '../txtf/input.txt'
+

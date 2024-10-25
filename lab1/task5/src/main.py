@@ -23,12 +23,12 @@ def min_max(array: list[int], mm: int) -> int:
 
 
 def selectionSort() -> None:
-    file = open("input.txt").readlines()[0]
+    file = open("../txtf/input.txt").readlines()[0]
     array = list(map(int, file.split()))
     sorted_array: list[int] = []
 
     for i in range(len(array)):
         sorted_array.append(array.pop(min_max(array, 1)))
-    open("output.txt", "w").write(str(normVid(sorted_array)))
+    open("../txtf/output.txt", "w").write(str(normVid(sorted_array)))
 
 

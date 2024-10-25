@@ -10,7 +10,7 @@ array = [random.randint(-10 ** 9, 10 ** 9) for i in range(10**3)]
 print("len array:", len(array))
 N = len(array)
 string = normVid(array) + "\n" + f"{N}"
-open("input.txt", "w").write(string)
+open("../txtf/input.txt", "w").write(string)
 tmp = time.time()
 selectionSort()
 print(time.time() - tmp)
@@ -22,7 +22,7 @@ array = [0]
 print("len array:", len(array))
 N = len(array)
 string = normVid(array) + "\n" + f"{N}"
-open("input.txt", "w").write(string)
+open("../txtf/input.txt", "w").write(string)
 tmp = time.time()
 selectionSort()
 print(time.time() - tmp)
