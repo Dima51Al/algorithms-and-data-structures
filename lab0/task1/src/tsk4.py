@@ -1,5 +1,2 @@
-a, b = open("../txtf/input.txt").read().split()
-a, b = int(a), int(b)
-
-open("../txtf/output.txt", "w").write(str(a + b ** 2))
-
+def sum_x_xx(first, second):
+    return first + second**2

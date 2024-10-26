@@ -1,5 +1,3 @@
-a, b = (input()).split()
-a, b = int(a), int(b)
-
-print(a + b**2)
+def sum_x_xx(first, second):
+    return first + second**2
 

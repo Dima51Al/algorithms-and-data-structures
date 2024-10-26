@@ -1,5 +1,4 @@
-a, b = open("../txtf/input.txt").read().split()
-a, b = int(a), int(b)
+def summ(first, second):
 
-open("../txtf/output.txt", "w").write(str(a + b))
+    return first+second
 

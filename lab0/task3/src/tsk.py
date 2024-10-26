@@ -1,18 +1,15 @@
-def f(n):
-    s1 = 1
-    s2 = 1
-    if n == 0:
+def fib(noun) -> int:
+    if noun < 0:
+        return -1
+    if noun == 0:
         return 0
-    if n == 1 or n == 2:
+    tmp1, tmp2 = 1, 1
+    if noun == 1 or noun == 2:
         return 1
-    c = 2
-    while c != n:
-        k = s1
-        s1 = (s1 + s2)%10
-        s2 = k%10
-        c += 1
-    return s1 % 10
-
-
-s = f(int(open("../txtf/input.txt").read()))
-open("../txtf/output.txt", "w").write(str(s))
+    number = 2
+    while number != noun:
+        key = tmp1
+        tmp1 = (tmp1 + tmp2) % 10
+        tmp2 = key % 10
+        number += 1
+    return tmp1 % 10
