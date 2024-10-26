@@ -11,5 +11,5 @@ def f(n):
         s2 = k
         c+=1
     return s1
-s = f(int(open("input.txt").read()))
-open("output.txt", "w").write(str(s))
+s = f(int(open("../txtf/input.txt").read()))
+open("../txtf/output.txt", "w").write(str(s))

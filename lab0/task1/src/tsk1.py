@@ -7,3 +7,8 @@ a, b = int(a), int(b)
 print(a + b)
 
 print(time.time_ns()-t)
+
+
+def summ(first, second):
+
+    return first+second

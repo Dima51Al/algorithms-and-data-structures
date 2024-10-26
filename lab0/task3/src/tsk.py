@@ -14,5 +14,5 @@ def f(n):
     return s1 % 10
 
 
-s = f(int(open("input.txt").read()))
-open("output.txt", "w").write(str(s))
+s = f(int(open("../txtf/input.txt").read()))
+open("../txtf/output.txt", "w").write(str(s))
