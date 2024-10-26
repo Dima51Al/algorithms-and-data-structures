@@ -10,7 +10,7 @@ def write_file(string: str) -> None:
     with open(path_output, "w", encoding="utf-8") as file:
         file.write(string)
 def read_file() -> str:
-    with open(path_output, "r") as file:
+    with open(path_input, "r") as file:
         return file.read()
 def normVid(array: list) -> str:
     s = ""

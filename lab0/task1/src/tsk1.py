@@ -1,9 +1,4 @@
-import time
+def summ(first, second):
 
-a, b = (input()).split()
-t = time.time_ns()
-a, b = int(a), int(b)
+    return first+second
 
-print(a + b)
-
-print(time.time_ns()-t)
