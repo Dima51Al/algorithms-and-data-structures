@@ -1,6 +1,5 @@
 
 import unittest
-from utils import *
 from lab2.task6.src.main import *
 
 
@@ -19,6 +18,7 @@ class MergeSortTestCase(unittest.TestCase):
         array = []
         for i in open(path_input, "r", encoding="utf-8").readlines():
             array.append([i.split()[0], float(i.split()[1].replace(",", "."))])
+
         write_file(max_delta(array))
 
         self.assertEqual(base_test(max_delta, array), "купить 16.07.1980 продать 16.03.1981 получить 55.400000000000006")

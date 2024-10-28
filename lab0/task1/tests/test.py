@@ -1,6 +1,6 @@
 import unittest
 
-from utils import *
+from lab2.utils import *
 
 import lab0.task1.src.tsk1 as tsk1
 import lab0.task1.src.tsk2 as tsk2

@@ -1,3 +1,6 @@
+from lab1.utils import *
+
+
 def swap_neighboring(array, i):
     array[i], array[i - 1] = array[i - 1], array[i]
     return array
@@ -11,3 +14,13 @@ def insertionSort(array) -> None:
             if tmp == 0:
                 break
     return array
+
+def main():
+    file = read_file_line(path_input, 1)
+
+    array = list(map(int, file.split()))
+
+    write_file(str(insertionSort(array)))
+
+if __name__ == '__main__':
+    main()

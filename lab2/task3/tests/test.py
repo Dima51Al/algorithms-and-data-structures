@@ -1,6 +1,6 @@
 
 import unittest
-from utils import *
+from lab2.utils import *
 from lab2.task3.src.main import merge_sort
 
 

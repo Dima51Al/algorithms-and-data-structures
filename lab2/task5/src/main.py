@@ -1,3 +1,6 @@
+from lab2.utils import *
+
+
 def merge(array: list[int], left: int, center: int, right: int) -> list[int]:
     left_array = array[left:center]
     right_array = array[center:right]
@@ -64,3 +67,12 @@ def majority(array: list[int]):
     return 1
 
 
+def main():
+    file = read_file_line(path_input, 1)
+
+    array = list(map(int, file.split()))
+
+    write_file(str(majority(array)))
+
+if __name__ == '__main__':
+    main()

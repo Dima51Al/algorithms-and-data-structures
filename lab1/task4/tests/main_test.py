@@ -1,5 +1,5 @@
 import unittest
-from utils import *
+from lab1.utils import *
 from lab1.task4.src.main import *
 
 class MergeSortTestCase(unittest.TestCase):

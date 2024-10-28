@@ -1,5 +1,7 @@
 import copy
 
+from lab1.utils import *
+
 
 def Bubble_sort(array):
     array = copy.deepcopy(array)
@@ -11,3 +13,13 @@ def Bubble_sort(array):
                 array[j-1], array[j] = tmp_2, tmp_1
 
     return array
+
+def main():
+    file = read_file_line(path_input, 1)
+
+    array = list(map(int, file.split()))
+
+    write_file(str(Bubble_sort(array)))
+
+if __name__ == '__main__':
+    main()

@@ -1,4 +1,4 @@
-from utils import *
+from lab2.utils import *
 
 
 def max_delta(array: list) -> str:
@@ -19,3 +19,15 @@ def max_delta(array: list) -> str:
             id_2 = tmp_max[1]
             string = "купить " + date[id_1] + " продать " + date[id_2] + " получить " + str(maximum)
     return string
+
+
+def main():
+    array = []
+    for i in open(path_input, "r", encoding="utf-8").readlines():
+        array.append([i.split()[0], float(i.split()[1].replace(",", "."))])
+
+    write_file(max_delta(array))
+
+
+if __name__ == '__main__':
+    main()

@@ -1,5 +1,5 @@
 import unittest
-from utils import *
+from lab1.utils import *
 from lab1.task1.src.main import insertionSort
 
 

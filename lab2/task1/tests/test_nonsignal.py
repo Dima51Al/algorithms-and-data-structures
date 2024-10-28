@@ -1,8 +1,5 @@
-import memory_profiler
-import random
-import time
 import unittest
-from utils import *
+from lab2.utils import *
 from lab2.task1.src.main_nonsignal import merge_sort
 
 

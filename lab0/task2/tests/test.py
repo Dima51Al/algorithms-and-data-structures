@@ -1,6 +1,6 @@
 import unittest
 
-from utils import *
+from lab2.utils import *
 
 from lab0.task2.src.tsk import *
 

@@ -1,4 +1,4 @@
-from random import random, randint
+from lab2.utils import *
 
 
 def merge(array: list[int], left: int, center: int, right: int) -> list[int]:
@@ -35,23 +35,13 @@ def merge_sort(array: list[int], left, right) -> list[int]:
     return array
 
 
-N = 10 ** 5
-# array = [randint(1, 10**9) for i in range(N)]
-array = [1, 8, 2, 1, 4, 7, 3, 2, 3, 6]
-with open("../txtf/output.txt", "w") as file:
-    file.write("")
-    file.close()
+def main():
+    file = read_file_line(path_input, 1)
 
+    array = list(map(int, file.split()))
 
-def normVid(array: list) -> str:
-    s = ""
-    for i in range(len(array) - 1):
-        s += str(array[i]) + " "
-    s += str(array[-1])
-    return s
+    write_file(str(merge_sort(array, 0, len(array))))
 
+if __name__ == '__main__':
+    main()
 
-a = merge_sort(array, 0, len(array))
-with open("../txtf/output.txt", "a") as file:
-    file.write(normVid(a))
-    file.close()

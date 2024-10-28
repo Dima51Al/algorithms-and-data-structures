@@ -1,5 +1,4 @@
 import unittest
-from utils import *
 from lab1.task5.src.main import *
 
 

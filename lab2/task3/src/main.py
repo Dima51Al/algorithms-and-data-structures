@@ -1,3 +1,6 @@
+from lab2.utils import *
+
+
 def merge(array: list[int], left: int, center: int, right: int) -> int:
     left_array = array[left:center]
     right_array = array[center:right]
@@ -34,3 +37,14 @@ def merge_sort(array: list[int], left, right) -> int:
         return res
 
     return 0
+
+def main():
+    file = read_file_line(path_input, 1)
+
+    array = list(map(int, file.split()))
+
+    write_file(str(merge_sort(array, 0, len(array))))
+
+if __name__ == '__main__':
+    main()
+
