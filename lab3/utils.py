@@ -1,3 +1,4 @@
+import random
 import time
 
 import memory_profiler
@@ -59,3 +60,9 @@ def min_max(array: list[int], mm: int) -> list[int]:
         if mm * array[i] < mm * array1[0]:
             array1[0], array1[1] = array[i], i
     return array1
+
+
+def random_array(length: int, min_value: int, max_value: int) -> list[int]:
+    return [random.randint(min_value, max_value) for _ in range(length)]
+
+
