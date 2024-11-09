@@ -3,6 +3,7 @@ import unittest
 from lab3.utils import *
 from lab3.task1.src.main import *
 
+
 import sys
 class QuickSortTestCase(unittest.TestCase):
 
@@ -14,6 +15,29 @@ class QuickSortTestCase(unittest.TestCase):
         self.assertEqual(array, sorted(array))
 
         write_file(normVid(array))
+
+
+    def test_randomize_aray_1000(self):
+        N = 10 ** 3
+        from random import randint
+        array = [randint(1, 10**9) for i in range(N)]
+        base_test(randomize_quicksort, array, 0, len(array))
+        self.assertEqual(array, sorted(array))
+
+    def test_randomize_aray_10000(self):
+        N = 10 ** 4
+        array = [randint(1, 10**9) for i in range(N)]
+
+        base_test(randomize_quicksort, array, 0, len(array))
+        self.assertEqual(array, sorted(array))
+
+    def test_randomize_aray_100000(self):
+        N = 10 ** 5
+        array = [randint(1, 10**9) for i in range(N)]
+
+        base_test(randomize_quicksort, array, 0, len(array))
+        self.assertEqual(array, sorted(array))
+
 
     def test_randomize_inversion_aray_1000(self):
         N = 10 ** 3
