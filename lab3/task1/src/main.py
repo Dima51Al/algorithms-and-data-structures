@@ -1,3 +1,4 @@
+import random
 from random import randint
 
 
@@ -12,7 +13,9 @@ def partition(array, left, right):
         if array[i] <= x:
             j = j + 1
             swap(array, j, i)
+            # print(array)
     swap(array, left, j)
+    # print(f"сортировали по {x}")
     return j
 
 
@@ -25,15 +28,14 @@ def quicksort(array, left, right):
 
 def randomize_quicksort(array, left, right):
     if left < right:
-        key = randint(left, right-1)
+        key = randint(left, right - 1)
         swap(array, left, key)
         m = partition(array, left, right)
-        quicksort(array, left, m)
-        quicksort(array, m + 1, right)
-    return array
+        randomize_quicksort(array, left, m)
+        randomize_quicksort(array, m + 1, right)
 
 
 if __name__ == '__main__':
-    array = [5, 4, 3, 2, 1]
+    array = [6, 4, 8, 2, 9, 3, 9, 4, 7, 6, 1]
     randomize_quicksort(array, 0, len(array))
-    print(array)
+    print(array == sorted(array))
