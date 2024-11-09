@@ -13,9 +13,7 @@ def partition(array, left, right):
         if array[i] <= x:
             j = j + 1
             swap(array, j, i)
-            # print(array)
     swap(array, left, j)
-    # print(f"сортировали по {x}")
     return j
 
 
