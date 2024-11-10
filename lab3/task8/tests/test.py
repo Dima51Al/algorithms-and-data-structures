@@ -20,8 +20,12 @@ class Dots_TestCase(unittest.TestCase):
 
 
     def test_dot_and_segments_max_values(self):
-        n = 100000
+        n = 10**5
         k = n
         segment_array = [[random.randint(-10**9, 10**9), random.randint(-10**9, 10**9)] for _ in range(n)]
         base_test(main, segment_array, k)
         """0.35 сек"""
+
+
+if __name__ == '__main__':
+    unittest.main()

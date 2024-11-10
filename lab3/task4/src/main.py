@@ -25,7 +25,7 @@ def partition(array, left, right):
     return grow_then, less_then
 
 
-def randomize_quicksort_in_turple(array, left, right):
+def randomize_quicksort_in_tuple(array, left, right):
     # Рекурсивный вызов для подмассивов
 
     if left < right:
@@ -33,8 +33,8 @@ def randomize_quicksort_in_turple(array, left, right):
         swap(array, left, key)
 
         grow_then, less_then = partition(array, left, right)
-        randomize_quicksort_in_turple(array, left, less_then - 1)
-        randomize_quicksort_in_turple(array, grow_then + 1, right)
+        randomize_quicksort_in_tuple(array, left, less_then - 1)
+        randomize_quicksort_in_tuple(array, grow_then + 1, right)
 
 
 def binSearch(array: list[tuple], number: int):
@@ -56,7 +56,7 @@ def binSearch(array: list[tuple], number: int):
 
 def main(segment_array: list[tuple], dot_array) -> list[int]:
     """на вход список из отрезков вида (a, b); список из точек """
-    randomize_quicksort_in_turple(segment_array, 0, len(segment_array) - 1)
+    randomize_quicksort_in_tuple(segment_array, 0, len(segment_array) - 1)
     dot_array_answer = []
 
     for i in range(len(dot_array)):
