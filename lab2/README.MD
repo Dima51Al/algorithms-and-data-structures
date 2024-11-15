@@ -21,7 +21,7 @@
    ```
    ```bash
    cd lab2
-   cd task2
+   cd task7
    cd tests
    ```
    ```bash
