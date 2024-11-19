@@ -99,3 +99,11 @@ def randomize_quicksort(array, left, right):
         grow_then, less_then = partition(array, left, right)
         randomize_quicksort(array, left, less_then - 1)
         randomize_quicksort(array, grow_then + 1, right)
+
+
+def reverse(array: list[int]):
+    second_array = []
+    for i in range(len(array) - 1, -1, -1):
+        second_array.append(array[i])
+    for i in range(len(array)):
+        array[i] = second_array[i]
