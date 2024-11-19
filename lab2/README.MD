@@ -21,7 +21,7 @@
    ```
    ```bash
    cd lab2
-   cd task2
+   cd task7
    cd tests
    ```
    ```bash
@@ -43,7 +43,7 @@
 ## Тестирование
 Для запуска тестов выполните:
 ```bash
-python test.py
+python tests.py
 ```
 
 ## Автор

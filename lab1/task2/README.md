@@ -8,5 +8,5 @@
 задние выполнено 
 
 ```shell
-cd lab1/task2/tests/
+cd lab1/task7/tests/
 ```
