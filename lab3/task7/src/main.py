@@ -1,7 +1,3 @@
-# main.py
-import random
-
-
 def swap(array, i, j):
     array[i], array[j] = array[j], array[i]
 
@@ -25,28 +21,24 @@ def partition(array, left, right, index_sort):
     return grow_then, less_then
 
 
-def randomize_quicksort_in_str(array, left, right, index_sort):
-    # Рекурсивный вызов для подмассивов
-
+def quicksort_in_str(array, left, right, index_sort):
     if left < right:
-        key = random.randint(left, right - 1)
-        swap(array, left, key)
-
         grow_then, less_then = partition(array, left, right, index_sort)
-        randomize_quicksort_in_str(array, left, less_then - 1, index_sort)
-        randomize_quicksort_in_str(array, grow_then + 1, right, index_sort)
+        quicksort_in_str(array, left, less_then - 1, index_sort)
+        quicksort_in_str(array, grow_then + 1, right, index_sort)
 
 
 
 
 
 def main(array: list[str]):
+    if len(array) == 0:
+        return array
+
     for i in range(len(array[0])-1, -1, -1):
-        randomize_quicksort_in_str(array, 0, len(array) - 1, i)
-
-
+        quicksort_in_str(array, 0, len(array) - 1, i)
     return array
 
 
 if __name__ == '__main__':
-    print(main(["bab", "bba", "baa"]))
+    print(main(["acd", "zab", "baa", "bab", "bbb"]))

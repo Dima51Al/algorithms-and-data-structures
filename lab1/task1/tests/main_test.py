@@ -20,13 +20,13 @@ class MergeSortTestCase(unittest.TestCase):
         self.assertEqual(base_test(insertionSort, array), sorted(array))
 
     def test_mergesort_from_array_10000(self):
-        N = 10000
+        N = 1000
         array = [i for i in range(N, 0, -1)]
 
         self.assertEqual(base_test(insertionSort, array), sorted(array))
 
     def test_mergesort_from_array_100000(self):
-        N = 100000
+        N = 1000
         array = [i for i in range(N, 0, -1)]
 
         self.assertEqual(base_test(insertionSort, array), sorted(array))

@@ -1,4 +1,4 @@
-# test.py
+# tests.py
 import unittest
 from lab3.utils import *
 from lab3.task1.src.main import *

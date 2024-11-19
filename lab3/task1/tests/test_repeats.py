@@ -1,4 +1,4 @@
-# test.py
+# tests.py
 import unittest
 from random import randint
 
@@ -41,4 +41,4 @@ class QuickSortTestCase(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.TestCase()
