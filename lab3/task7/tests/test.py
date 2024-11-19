@@ -18,7 +18,7 @@ class RadixSortTestCase(unittest.TestCase):
             input_data.append(read_file_line(path_input, i).replace("\n", "").replace(" ", ""))
 
         expected_output = ["baa", "bab", "bba"]
-        self.assertEqual(main(input_data), expected_output)
+        self.assertEqual(base_test(main, input_data), expected_output)
 
 
 
@@ -26,30 +26,39 @@ class RadixSortTestCase(unittest.TestCase):
 
         input_data = ["bab", "bba", "baa"]
         expected_output = ["baa", "bab", "bba"]
-        self.assertEqual(main(input_data), expected_output)
+        self.assertEqual(base_test(main, input_data), expected_output)
 
     def test_radix_sort_empty(self):
 
         input_data = []
         expected_output = []
-        self.assertEqual(main(input_data), expected_output)
+        self.assertEqual(base_test(main, input_data), expected_output)
 
     def test_radix_sort_single_element(self):
 
         input_data = ["abc"]
         expected_output = ["abc"]
-        self.assertEqual(main(input_data), expected_output)
+        self.assertEqual(base_test(main, input_data), expected_output)
 
     def test_radix_sort_identical_elements(self):
 
         input_data = ["aaa", "aaa", "aaa"]
         expected_output = ["aaa", "aaa", "aaa"]
-        self.assertEqual(main(input_data), expected_output)
+        self.assertEqual(base_test(main, input_data), expected_output)
 
     def test_radix_sort_random(self):
         input_data = ["acd", "zab", "baa", "bab", "bbb"]
         expected_output = ["acd", "baa", "bab", "bbb", "zab"]
-        self.assertEqual(main(input_data), expected_output)
+
+        self.assertEqual(base_test(main, input_data), expected_output)
+
+
+    def test_radix_sort_max(self):
+        input_data_0 = ["acd", "zab", "baa", "bab", "bbb"]
+        input_data = [input_data_0[random.randint(0, 4)] for i in range(10**6)]
+
+
+        base_test(main, input_data)
 
 
 
