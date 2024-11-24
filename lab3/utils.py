@@ -107,3 +107,17 @@ def reverse(array: list[int]):
         second_array.append(array[i])
     for i in range(len(array)):
         array[i] = second_array[i]
+
+
+def gwt(title, given, when, then):
+    """
+    Helper function to wrap tests in BDD-style descriptions.
+    :param title: Description of the test scenario
+    :param given: Description of the preconditions (Given)
+    :param when: Description of the action (When)
+    :param then: Description of the expected result (Then)
+    """
+    print(f"\nTEST CASE: {title}")
+    print(f"  GIVEN: {given}")
+    print(f"  WHEN: {when}")
+    print(f"  THEN: {then}")
