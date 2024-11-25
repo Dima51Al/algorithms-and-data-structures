@@ -7,7 +7,7 @@ path_input = "../txtf/input.txt"
 path_output = "../txtf/output.txt"
 
 
-def write_file(string: str) -> None:
+def write_file(path_output, string: str) -> None:
     with open(path_output, "w", encoding="utf-8") as file:
         file.write(string)
 

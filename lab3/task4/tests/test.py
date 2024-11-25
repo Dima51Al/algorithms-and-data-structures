@@ -1,3 +1,4 @@
+import os
 import unittest
 from lab3.utils import *
 from lab3.task4.src.main import *
@@ -5,7 +6,10 @@ from lab3.task4.src.main import *
 class Dots_and_Segments_TestCase(unittest.TestCase):
 
     def test_dot_and_segments_from_file(self):
-
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        parent_dir = os.path.dirname(current_dir)
+        path_input = os.path.join(parent_dir, 'txtf\\input.txt')
+        path_output = os.path.join(parent_dir, 'txtf\\output.txt')
 
         s = int(read_file_line(path_input, 0).split()[0])
         segment_array = []
@@ -19,7 +23,7 @@ class Dots_and_Segments_TestCase(unittest.TestCase):
 
         self.assertEqual(base_test(main, segment_array, dot_array), [1, 0, 0])
 
-        write_file(normVid(main(segment_array, dot_array)))
+        write_file(path_output, normVid(main(segment_array, dot_array)))
 
     def test_dot_and_segments_max_values(self):
 

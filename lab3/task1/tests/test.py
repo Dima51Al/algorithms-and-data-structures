@@ -2,11 +2,16 @@
 import unittest
 from lab3.utils import *
 from lab3.task1.src.main import *
-
+import os
 
 class QuickSortTestCase(unittest.TestCase):
 
     def test_randomize_inversion_from_file(self):
+
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        parent_dir = os.path.dirname(current_dir)
+        path_input = os.path.join(parent_dir, 'txtf\\input.txt')
+        path_output = os.path.join(parent_dir, 'txtf\\output.txt')
 
         file = read_file_line(path_input, 1)
         array = list(map(int, file.split()))
@@ -14,7 +19,7 @@ class QuickSortTestCase(unittest.TestCase):
         base_test(randomize_quicksort, array, 0, len(array))
         self.assertEqual(array, sorted(array))
 
-        write_file(normVid(array))
+        write_file(path_output, normVid(array))
 
 
     def test_randomize_aray_1000(self):

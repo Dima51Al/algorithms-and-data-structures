@@ -1,4 +1,5 @@
 # tests.py
+import os
 import unittest
 from lab3.utils import *
 from lab3.task3.src.main import *
@@ -7,6 +8,11 @@ from lab3.task3.src.main import *
 class QuickSortTestCase(unittest.TestCase):
 
     def test_pugalo_from_file(self):
+
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        parent_dir = os.path.dirname(current_dir)
+        path_input = os.path.join(parent_dir, 'txtf\\input.txt')
+        path_output = os.path.join(parent_dir, 'txtf\\output.txt')
 
 
         file = read_file_line(path_input, 1)
@@ -17,9 +23,9 @@ class QuickSortTestCase(unittest.TestCase):
         self.assertEqual(base_test(pugalo, array, arm_len), True)
 
         if pugalo(array, arm_len):
-            write_file("ДА")
+            write_file(path_output, "ДА")
         else:
-            write_file("НЕТ")
+            write_file(path_output, "НЕТ")
 
     def test_random_aray_1000(self):
 

@@ -1,10 +1,16 @@
+import os
 import unittest
 from lab3.utils import *
 from lab3.task8.src.main import *
 
-class Dots_TestCase(unittest.TestCase):
+
+class DotsTestCase(unittest.TestCase):
 
     def test_dot_from_file(self):
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        parent_dir = os.path.dirname(current_dir)
+        path_input = os.path.join(parent_dir, 'txtf\\input.txt')
+        path_output = os.path.join(parent_dir, 'txtf\\output.txt')
         #given
         s = int(read_file_line(path_input, 0).split()[0])
         k = int(read_file_line(path_input, 0).split()[1])
@@ -17,7 +23,7 @@ class Dots_TestCase(unittest.TestCase):
         #when
         self.assertEqual(base_test(main, segment_array, k), [[-2, 2]])
         #then
-        write_file(normVid(main(segment_array, k)))
+        write_file(path_output, normVid(main(segment_array, k)))
 
     def test_dot_and_segments_max_values(self):
 

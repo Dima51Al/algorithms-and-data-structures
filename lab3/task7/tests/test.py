@@ -1,3 +1,4 @@
+import os
 import unittest
 from lab3.task7.src.main import main, main_with_index
 from lab3.utils import *
@@ -5,6 +6,10 @@ from lab3.utils import *
 
 class RadixSortTestCase(unittest.TestCase):
     def test_radix_sort_file(self):
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        parent_dir = os.path.dirname(current_dir)
+        path_input = os.path.join(parent_dir, 'txtf\\input.txt')
+        path_output = os.path.join(parent_dir, 'txtf\\output.txt')
         def vertical_to_horizontal(vertical_data):
             rows = len(vertical_data)
             cols = len(vertical_data[0])
@@ -31,7 +36,7 @@ class RadixSortTestCase(unittest.TestCase):
 
         expected_output = [2, 3, 1]
         self.assertEqual(base_test(main_with_index, input_data, 0), expected_output)
-        write_file(normVid(expected_output))
+        write_file(path_output, normVid(expected_output))
 
     def test_radix_sort_simple(self):
 
