@@ -69,4 +69,4 @@ docker-compose.yml
 *.DS_Store
 *.orig
 *.out
-создать лабу.py
+create_lab.py

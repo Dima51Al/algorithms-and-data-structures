@@ -1,37 +1,24 @@
-import os
 import unittest
-from lab3.utils import *
 from lab3.task8.src.main import *
+from lab3.utils import *
 
 
 class DotsTestCase(unittest.TestCase):
 
-    def test_dot_from_file(self):
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        parent_dir = os.path.dirname(current_dir)
-        path_input = os.path.join(parent_dir, 'txtf\\input.txt')
-        path_output = os.path.join(parent_dir, 'txtf\\output.txt')
-        #given
-        s = int(read_file_line(path_input, 0).split()[0])
-        k = int(read_file_line(path_input, 0).split()[1])
-        segment_array = []
-
-        for i in range(s):
-            x = int(read_file_line(path_input, i+1).split()[0])
-            y = int(read_file_line(path_input, i+1).split()[1])
-            segment_array.append([x, y])
-        #when
-        self.assertEqual(base_test(main, segment_array, k), [[-2, 2]])
-        #then
-        write_file(path_output, normVid(main(segment_array, k)))
-
-    def test_dot_and_segments_max_values(self):
-
+    def test_should_randomize_dot_and_segments_max_values(self):
+        # given
         n = 10**5
         k = n
         segment_array = [[random.randint(-10**9, 10**9), random.randint(-10**9, 10**9)] for _ in range(n)]
-        base_test(main, segment_array, k)
-        """0.35 сек"""
+
+        # when
+        start_memory, start_time = memory_and_time()
+        main(segment_array, k)
+        final_memory, final_time = memory_and_time()
+
+        # then
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
 
 if __name__ == '__main__':

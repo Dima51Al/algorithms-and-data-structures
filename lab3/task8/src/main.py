@@ -25,7 +25,7 @@ def partition(array, left, right, index_sort):
     return grow_then, less_then
 
 
-def randomize_quicksort_in_turple(array, left, right, index_sort):
+def randomize_quicksort_in_tuple(array, left, right, index_sort):
     # Рекурсивный вызов для подмассивов
 
     if left < right:
@@ -33,8 +33,8 @@ def randomize_quicksort_in_turple(array, left, right, index_sort):
         swap(array, left, key)
 
         grow_then, less_then = partition(array, left, right, index_sort)
-        randomize_quicksort_in_turple(array, left, less_then - 1, index_sort)
-        randomize_quicksort_in_turple(array, grow_then + 1, right, index_sort)
+        randomize_quicksort_in_tuple(array, left, less_then - 1, index_sort)
+        randomize_quicksort_in_tuple(array, grow_then + 1, right, index_sort)
 
 
 def rast(a, b):
@@ -44,7 +44,7 @@ def rast(a, b):
 def main(array: list[list], k: int):
     for i in range(len(array)):
         array[i].append(rast(array[i][0], array[i][1]))
-    randomize_quicksort_in_turple(array, 0, len(array)-1, 2)
+    randomize_quicksort_in_tuple(array, 0, len(array) - 1, 2)
     array_answer = []
     for i in range(k):
         array_answer.append(array[i][0:2])
@@ -54,3 +54,4 @@ def main(array: list[list], k: int):
 
 if __name__ == '__main__':
     print(main([[3, 3], [5, -1], [-2, 4]], 2))
+

@@ -30,23 +30,9 @@ def read_file_line(path: str, num: int) -> str:
     return line
 
 
-def base_test(function, *args):
-    """функция, аргумент1, аргумент2..."""
-    memory_before = memory_profiler.memory_usage()[0]
-
-    tmp = time.time()
-
-    answer = function(*args)
-
-    tmp = time.time() - tmp
-
-    memory_after = memory_profiler.memory_usage()[0]
-
-    print()
-    print("Время выполнения: ", tmp, " сек")
-    print("Использование памяти: ", memory_after - memory_before, "МБ")
-    print()
-    return answer
+def memory_and_time():
+    """return memory, time"""
+    return memory_profiler.memory_usage()[0], time.time()
 
 
 def min_max(array: list[int], mm: int) -> list[int]:
@@ -108,16 +94,3 @@ def reverse(array: list[int]):
     for i in range(len(array)):
         array[i] = second_array[i]
 
-
-def gwt(title, given, when, then):
-    """
-    Helper function to wrap tests in BDD-style descriptions.
-    :param title: Description of the test scenario
-    :param given: Description of the preconditions (Given)
-    :param when: Description of the action (When)
-    :param then: Description of the expected result (Then)
-    """
-    print(f"\nTEST CASE: {title}")
-    print(f"  GIVEN: {given}")
-    print(f"  WHEN: {when}")
-    print(f"  THEN: {then}")

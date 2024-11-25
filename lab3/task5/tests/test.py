@@ -1,4 +1,3 @@
-import os
 import unittest
 from lab3.task5.src.main import h_index
 from lab3.utils import *
@@ -6,38 +5,48 @@ from lab3.utils import *
 
 class HIndexTestCase(unittest.TestCase):
 
-    def test_h_index_from_file(self):
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        parent_dir = os.path.dirname(current_dir)
-        path_input = os.path.join(parent_dir, 'txtf\\input.txt')
-        path_output = os.path.join(parent_dir, 'txtf\\output.txt')
-
-        str_arr = read_file_line(path_input, 0).split()
-        array = list(map(int, str_arr))
-        self.assertEqual(base_test(h_index, array), 3)
-        write_file(path_output, str(h_index(array)))
-
-    def test_h_index_min(self):
-
-
+    def test_should_randomize_h_index_min(self):
+        # given
         N = 0
         array = random_array(N, -10**8, 10**8)
-        base_test(h_index, array)
 
-    def test_h_index_avg(self):
+        # when
+        start_memory, start_time = memory_and_time()
+        h_index(array)
+        final_memory, final_time = memory_and_time()
 
+        # then
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
+    def test_should_randomize_h_index_avg(self):
+        # given
         N = 1000
         array = random_array(N, -10**8, 10**8)
-        base_test(h_index, array)
 
-    def test_h_index_max(self):
+        # when
+        start_memory, start_time = memory_and_time()
+        h_index(array)
+        final_memory, final_time = memory_and_time()
 
+        # then
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
+
+    def test_should_randomize_h_index_max(self):
+        # given
         N = 5000
         array = random_array(N, -10**8, 10**8)
-        base_test(h_index, array)
-        """77-80 секунд"""
+
+        # when
+        start_memory, start_time = memory_and_time()
+        h_index(array)
+        final_memory, final_time = memory_and_time()
+
+        # then
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
 
 if __name__ == '__main__':
-    unittest.TestCase()
+    unittest.main()

@@ -41,9 +41,9 @@ def base_test(function, *args):
 
     memory_after = memory_profiler.memory_usage()[0]
 
-    print()
-    print("Время выполнения: ", tmp)
-    print("Использование памяти: ", memory_after - memory_before, "МБ")
+    # print()
+    # print("Время выполнения: ", tmp)
+    # print("Использование памяти: ", memory_after - memory_before, "МБ")
     return answer
 
 

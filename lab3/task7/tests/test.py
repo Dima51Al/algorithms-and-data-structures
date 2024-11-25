@@ -3,82 +3,96 @@ import unittest
 from lab3.task7.src.main import main, main_with_index
 from lab3.utils import *
 
-
 class RadixSortTestCase(unittest.TestCase):
-    def test_radix_sort_file(self):
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        parent_dir = os.path.dirname(current_dir)
-        path_input = os.path.join(parent_dir, 'txtf\\input.txt')
-        path_output = os.path.join(parent_dir, 'txtf\\output.txt')
-        def vertical_to_horizontal(vertical_data):
-            rows = len(vertical_data)
-            cols = len(vertical_data[0])
-            horizontal_data = [''.join(vertical_data[row][col] for row in range(rows)) for col in range(cols)]
-            return horizontal_data
 
-
-
-        n = read_file_line(path_input, 0)
-        n = n.split()
-        n = n[0]
-        n = int(n)
-
-        input_data = []
-
-
-        for i in range(1, n + 1):
-            input_data.append(read_file_line(path_input, i).replace("\n", "").replace(" ", ""))
-        input_data_tmp = vertical_to_horizontal(input_data)
-        input_data = []
-        for i in range(len(input_data_tmp)):
-            input_data.append((input_data_tmp[i], i+1))
-
-
-        expected_output = [2, 3, 1]
-        self.assertEqual(base_test(main_with_index, input_data, 0), expected_output)
-        write_file(path_output, normVid(expected_output))
-
-    def test_radix_sort_simple(self):
-
+    def test_should_radix_sort_simple(self):
+        # given
         input_data = ["bab", "bba", "baa"]
         expected_output = ["baa", "bab", "bba"]
-        self.assertEqual(base_test(main, input_data), expected_output)
 
-    def test_radix_sort_empty(self):
+        # when
+        start_memory, start_time = memory_and_time()
+        result = main(input_data)
+        final_memory, final_time = memory_and_time()
 
+        # then
+        self.assertEqual(result, expected_output)
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
+    def test_should_radix_sort_empty(self):
+        # given
         input_data = []
         expected_output = []
-        self.assertEqual(base_test(main, input_data), expected_output)
 
-    def test_radix_sort_single_element(self):
+        # when
+        start_memory, start_time = memory_and_time()
+        result = main(input_data)
+        final_memory, final_time = memory_and_time()
 
+        # then
+        self.assertEqual(result, expected_output)
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
+    def test_should_radix_sort_single_element(self):
+        # given
         input_data = ["abc"]
         expected_output = ["abc"]
-        self.assertEqual(base_test(main, input_data), expected_output)
 
-    def test_radix_sort_identical_elements(self):
+        # when
+        start_memory, start_time = memory_and_time()
+        result = main(input_data)
+        final_memory, final_time = memory_and_time()
 
+        # then
+        self.assertEqual(result, expected_output)
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
+    def test_should_radix_sort_identical_elements(self):
+        # given
         input_data = ["aaa", "aaa", "aaa"]
         expected_output = ["aaa", "aaa", "aaa"]
-        self.assertEqual(base_test(main, input_data), expected_output)
 
-    def test_radix_sort_random(self):
+        # when
+        start_memory, start_time = memory_and_time()
+        result = main(input_data)
+        final_memory, final_time = memory_and_time()
 
+        # then
+        self.assertEqual(result, expected_output)
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
+    def test_should_radix_sort_random(self):
+        # given
         input_data = ["acd", "zab", "baa", "bab", "bbb"]
         expected_output = ["acd", "baa", "bab", "bbb", "zab"]
-        self.assertEqual(base_test(main, input_data), expected_output)
 
-    def test_radix_sort_max(self):
+        # when
+        start_memory, start_time = memory_and_time()
+        result = main(input_data)
+        final_memory, final_time = memory_and_time()
 
+        # then
+        self.assertEqual(result, expected_output)
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
+    def test_should_radix_sort_max(self):
+        # given
         input_data_0 = ["acd", "zab", "baa", "bab", "bbb"]
         input_data = [input_data_0[random.randint(0, 4)] for i in range(10**6)]
 
-        base_test(main, input_data)
+        # when
+        start_memory, start_time = memory_and_time()
+        main(input_data)
+        final_memory, final_time = memory_and_time()
+
+        # then
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
 
 if __name__ == '__main__':

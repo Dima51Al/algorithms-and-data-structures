@@ -36,4 +36,4 @@ def randomize_quicksort(array, left, right):
 if __name__ == '__main__':
     array = [6, 4, 8, 2, 9, 3, 9, 4, 7, 6, 1]
     randomize_quicksort(array, 0, len(array))
-    print(array == sorted(array))
+    print(array)

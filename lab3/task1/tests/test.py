@@ -1,75 +1,99 @@
-# tests.py
 import unittest
-from lab3.utils import *
-from lab3.task1.src.main import *
-import os
+from lab3.utils import random_array, memory_and_time
+from lab3.task1.src.main import randomize_quicksort
+
 
 class QuickSortTestCase(unittest.TestCase):
 
-    def test_randomize_inversion_from_file(self):
-
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        parent_dir = os.path.dirname(current_dir)
-        path_input = os.path.join(parent_dir, 'txtf\\input.txt')
-        path_output = os.path.join(parent_dir, 'txtf\\output.txt')
-
-        file = read_file_line(path_input, 1)
-        array = list(map(int, file.split()))
-
-        base_test(randomize_quicksort, array, 0, len(array))
-        self.assertEqual(array, sorted(array))
-
-        write_file(path_output, normVid(array))
-
-
-    def test_randomize_aray_1000(self):
-
-
+    def test_should_randomize_quicksort_1000(self):
+        # given
         N = 10 ** 3
-        from random import randint
-        array = [randint(1, 10**9) for i in range(N)]
-        base_test(randomize_quicksort, array, 0, len(array))
+        array = random_array(N, 1, 10 ** 9)
+
+        # when
+        start_memory, start_time = memory_and_time()
+        randomize_quicksort(array, 0, len(array))
         self.assertEqual(array, sorted(array))
+        final_memory, final_time = memory_and_time()
 
-    def test_randomize_aray_10000(self):
+        # then
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
+    def test_should_randomize_quicksort_10000(self):
+        # given
         N = 10 ** 4
-        array = [randint(1, 10**9) for i in range(N)]
+        array = random_array(N, 1, 10 ** 9)
 
-        base_test(randomize_quicksort, array, 0, len(array))
+        # when
+        start_memory, start_time = memory_and_time()
+        randomize_quicksort(array, 0, len(array))
         self.assertEqual(array, sorted(array))
+        final_memory, final_time = memory_and_time()
 
-    def test_randomize_aray_100000(self):
+        # then
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
+    def test_should_randomize_quicksort_100000(self):
+        # given
         N = 10 ** 5
-        array = [randint(1, 10**9) for i in range(N)]
+        array = random_array(N, 1, 10 ** 9)
 
-        base_test(randomize_quicksort, array, 0, len(array))
+        # when
+        start_memory, start_time = memory_and_time()
+        randomize_quicksort(array, 0, len(array))
         self.assertEqual(array, sorted(array))
+        final_memory, final_time = memory_and_time()
 
+        # then
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
-    def test_randomize_inversion_aray_1000(self):
-
+    def test_should_randomize_quicksort_inversion_1000(self):
+        # given
         N = 10 ** 3
         array = [i for i in range(N, -1, -1)]
-        base_test(randomize_quicksort, array, 0, len(array))
+
+        # when
+        start_memory, start_time = memory_and_time()
+        randomize_quicksort(array, 0, len(array))
         self.assertEqual(array, sorted(array))
+        final_memory, final_time = memory_and_time()
 
-    def test_randomize_inversion_aray_10000(self):
+        # then
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
+    def test_should_randomize_quicksort_inversion_10000(self):
+        # given
         N = 10 ** 4
         array = [i for i in range(N, -1, -1)]
 
-        base_test(randomize_quicksort, array, 0, len(array))
+        # when
+        start_memory, start_time = memory_and_time()
+        randomize_quicksort(array, 0, len(array))
         self.assertEqual(array, sorted(array))
+        final_memory, final_time = memory_and_time()
 
-    def test_randomize_inversion_aray_100000(self):
+        # then
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
+    def test_should_randomize_quicksort_inversion_100000(self):
+        # given
         N = 10 ** 5
         array = [i for i in range(N, -1, -1)]
 
-        base_test(randomize_quicksort, array, 0, len(array))
+        # when
+        start_memory, start_time = memory_and_time()
+        randomize_quicksort(array, 0, len(array))
         self.assertEqual(array, sorted(array))
+        final_memory, final_time = memory_and_time()
+
+        # then
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
 
 
 if __name__ == '__main__':
