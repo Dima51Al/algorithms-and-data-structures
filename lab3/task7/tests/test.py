@@ -1,11 +1,16 @@
-# tests.py
 import unittest
-from lab3.task7.src.main import main
+from lab3.task7.src.main import main, main_with_index
 from lab3.utils import *
 
 
 class RadixSortTestCase(unittest.TestCase):
     def test_radix_sort_file(self):
+        def vertical_to_horizontal(vertical_data):
+            rows = len(vertical_data)
+            cols = len(vertical_data[0])
+            horizontal_data = [''.join(vertical_data[row][col] for row in range(rows)) for col in range(cols)]
+            return horizontal_data
+
         gwt(
             title="test_radix_sort_file",
             given="A file containing a number of strings to be sorted lexicographically",
@@ -19,11 +24,19 @@ class RadixSortTestCase(unittest.TestCase):
         n = int(n)
 
         input_data = []
+
+
         for i in range(1, n + 1):
             input_data.append(read_file_line(path_input, i).replace("\n", "").replace(" ", ""))
+        input_data_tmp = vertical_to_horizontal(input_data)
+        input_data = []
+        for i in range(len(input_data_tmp)):
+            input_data.append((input_data_tmp[i], i+1))
 
-        expected_output = ["baa", "bab", "bba"]
-        self.assertEqual(base_test(main, input_data), expected_output)
+
+        expected_output = [2, 3, 1]
+        self.assertEqual(base_test(main_with_index, input_data, 0), expected_output)
+        write_file(normVid(expected_output))
 
     def test_radix_sort_simple(self):
         gwt(
