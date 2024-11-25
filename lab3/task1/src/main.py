@@ -1,3 +1,4 @@
+import os.path
 import random
 from random import randint
 
@@ -33,7 +34,17 @@ def randomize_quicksort(array, left, right):
         randomize_quicksort(array, m + 1, right)
 
 
+
 if __name__ == '__main__':
-    array = [6, 4, 8, 2, 9, 3, 9, 4, 7, 6, 1]
+    from lab3.utils import read_file_line, write_file, normVid
+    path_input = os.path.join(os.path.dirname(__file__), '..', 'txtf', 'input.txt')
+    path_output = os.path.join(os.path.dirname(__file__), '..', 'txtf', 'output.txt')
+
+    array = read_file_line(path_input, 1)
+    array = list(map(int, array.split()))
+
     randomize_quicksort(array, 0, len(array))
-    print(array)
+
+    write_file(path_output, normVid(array))
+    print(f"task1 записан {array}")
+

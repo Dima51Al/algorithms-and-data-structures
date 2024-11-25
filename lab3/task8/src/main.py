@@ -1,5 +1,8 @@
 # main.py
+import os
 import random
+
+from lab3.utils import read_file_line, write_file, normVid
 
 
 def swap(array, i, j):
@@ -53,5 +56,20 @@ def main(array: list[list], k: int):
 
 
 if __name__ == '__main__':
-    print(main([[3, 3], [5, -1], [-2, 4]], 2))
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    parent_dir = os.path.dirname(current_dir)
+    path_input = os.path.join(os.path.dirname(__file__), '..', 'txtf', 'input.txt')
+    path_output = os.path.join(os.path.dirname(__file__), '..', 'txtf', 'output.txt')
+    s = int(read_file_line(path_input, 0).split()[0])
+    k = int(read_file_line(path_input, 0).split()[1])
+    segment_array = []
+    for i in range(s):
+        x = int(read_file_line(path_input, i + 1).split()[0])
+        y = int(read_file_line(path_input, i + 1).split()[1])
+        segment_array.append([x, y])
 
+
+    arr = main(segment_array, k)
+
+    write_file(path_output, normVid(arr))
+    print(f"task1 записан {arr}")

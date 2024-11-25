@@ -1,4 +1,5 @@
 # точки и отрезки
+import os
 
 from lab3.utils import *
 
@@ -73,4 +74,22 @@ def main(segment_array: list[tuple], dot_array) -> list[int]:
 
 
 if __name__ == '__main__':
-    print(main([(1, 2)], [0, 1.5, 2, 3]) == [0, 1, 1, 0])
+    from lab3.utils import read_file_line, write_file, normVid
+    path_input = os.path.join(os.path.dirname(__file__), '..', 'txtf', 'input.txt')
+    path_output = os.path.join(os.path.dirname(__file__), '..', 'txtf', 'output.txt')
+
+    s = int(read_file_line(path_input, 0).split()[0])
+    segment_array = []
+
+    for i in range(s):
+        x = int(read_file_line(path_input, i + 1).split()[0])
+        y = int(read_file_line(path_input, i + 1).split()[1])
+        segment_array.append((x, y))
+
+    dot_array = list(map(int, read_file_line(path_input, s + 1).split()))
+
+
+    answer_arr = main(segment_array, dot_array)
+
+    write_file(path_output, normVid(answer_arr))
+    print(f"task1 записан {answer_arr}")

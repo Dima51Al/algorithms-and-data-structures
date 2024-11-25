@@ -1,4 +1,5 @@
 # сортировка пугалом
+import os
 
 from lab3.utils import *
 
@@ -36,4 +37,15 @@ def pugalo(array, arm_len) -> bool:
 
 
 if __name__ == '__main__':
-    print(pugalo([1, 5, 3, 4, 1], 3))
+    path_input = os.path.join(os.path.dirname(__file__), '..', 'txtf', 'input.txt')
+    path_output = os.path.join(os.path.dirname(__file__), '..', 'txtf', 'output.txt')
+    array = read_file_line(path_input, 1)
+    array = list(map(int, array.split()))
+
+    array_nums = read_file_line(path_input, 0)
+    array_nums = list(map(int, array_nums.split()))
+
+    answer = pugalo(array, array_nums[1])
+
+    write_file(path_output, str(answer))
+    print(f"task3 записан {answer}")
