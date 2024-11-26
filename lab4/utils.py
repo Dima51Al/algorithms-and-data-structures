@@ -41,6 +41,7 @@ def vertical_norm_view(array) -> str:
 
     return s
 
+
 def read_file_line(path: str, num: int) -> str:
     line = open(path, "r").readlines()[num]
     return line.strip()
