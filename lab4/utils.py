@@ -19,15 +19,31 @@ def read_file() -> str:
 
 def normVid(array: list) -> str:
     s = ""
+
     for i in range(len(array) - 1):
         s += str(array[i]) + " "
+
     s += str(array[-1])
+
     return s
 
 
+def vertical_norm_view(array) -> str:
+    if len(array) == 0:
+        return ""
+
+    s = ""
+
+    for i in range(len(array) - 1):
+        s += f"{array[i]}\n"
+
+    s += f"{array[-1]}"
+
+    return s
+
 def read_file_line(path: str, num: int) -> str:
     line = open(path, "r").readlines()[num]
-    return line
+    return line.strip()
 
 
 def memory_and_time():
