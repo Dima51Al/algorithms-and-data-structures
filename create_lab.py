@@ -23,7 +23,7 @@ def create_lab_structure(N, array):
         with open(os.path.join(src_dir, "main.py"), "w") as f:
             f.write("")
 
-        with open(os.path.join(tests_dir, "test.py"), "w") as f:
+        with open(os.path.join(tests_dir, "test_main.py"), "w") as f:
             f.write("")
 
         with open(os.path.join(txtf_dir, "input.txt"), "w") as f:
