@@ -21,14 +21,14 @@ def remove_cache():
                     os.remove(file_path)
 
 
-def run_tests(start_dir):
+def run_tests():
     loader = unittest.TestLoader()
-    tests = loader.discover(start_dir=start_dir, pattern="*test.py")
+    tests = loader.discover(start_dir=os.pardir, pattern="test_main.py")
     test_suite = unittest.TestSuite(tests)
-    runner = unittest.TextTestRunner(verbosity=2, buffer=True)
+    runner = unittest.TextTestRunner(verbosity=2)
     runner.run(test_suite)
 
 
 if __name__ == "__main__":
     remove_cache()
-    run_tests("lab4")
+    run_tests()

@@ -114,6 +114,12 @@ class Queue:
 
 
 if __name__ == '__main__':
+
+    import sys
+    import os
+
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+
     queue_array = Queue()
     answer_array = []
 
@@ -131,6 +137,9 @@ if __name__ == '__main__':
             queue_array.center_push(value)
 
     from lab4.utils import read_file_line, write_file, vertical_norm_view
+
+
+
 
     count_of_strings = int(read_file_line(path_input, 0))
 

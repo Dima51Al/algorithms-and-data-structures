@@ -1,9 +1,9 @@
 import unittest
 from lab4.utils import *
-from lab4.task13part2.src.main import Queue
+from lab4.task9.src.main import Queue
 
 
-class QueueTestCase(unittest.TestCase):
+class QueueCenterTestCase(unittest.TestCase):
 
     def test_should_check_max_size(self):
         # given
@@ -19,7 +19,35 @@ class QueueTestCase(unittest.TestCase):
 
         final_memory, final_time = memory_and_time()
 
-        print(final_time - start_time)
+
+        # then
+        self.assertLessEqual(final_time - start_time, 2)
+        self.assertLessEqual(final_memory - start_memory, 256)
+
+
+    def test_should_max_requests(self):
+        # given
+        difficulty = 10**5
+        input_array = Queue([0])
+
+
+        # when
+        start_memory, start_time = memory_and_time()
+
+
+
+        for i in range(difficulty):
+            input_array.center_push(10**9)
+
+        for i in range(difficulty):
+            input_array.dequeue()
+
+        result = input_array.get_array()
+
+
+        final_memory, final_time = memory_and_time()
+
+
 
         # then
         self.assertLessEqual(final_time - start_time, 2)

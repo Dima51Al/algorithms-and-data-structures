@@ -25,8 +25,6 @@ class StackTestCase(unittest.TestCase):
 
 
 
-        print(final_time - start_time)
-
         # then
         self.assertLessEqual(final_time - start_time, 2)
         self.assertLessEqual(final_memory - start_memory, 256)
