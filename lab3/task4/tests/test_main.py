@@ -14,7 +14,7 @@ class DotsAndSegmentsTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        main(segment_array, dot_array)
+        result = main(segment_array, dot_array)
         final_memory, final_time = memory_and_time()
 
         # then
@@ -30,7 +30,7 @@ class DotsAndSegmentsTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        main(segment_array, dot_array)
+        result = main(segment_array, dot_array)
         final_memory, final_time = memory_and_time()
 
         # then

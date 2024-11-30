@@ -87,7 +87,7 @@ class RadixSortTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        main(input_data)
+        result = main(input_data)
         final_memory, final_time = memory_and_time()
 
         # then

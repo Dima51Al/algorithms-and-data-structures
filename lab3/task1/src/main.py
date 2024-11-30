@@ -32,6 +32,7 @@ def randomize_quicksort(array, left, right):
         m = partition(array, left, right)
         randomize_quicksort(array, left, m)
         randomize_quicksort(array, m + 1, right)
+    return array
 
 
 

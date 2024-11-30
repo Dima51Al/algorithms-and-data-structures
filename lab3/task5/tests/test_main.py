@@ -12,7 +12,7 @@ class HIndexTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        h_index(array)
+        result = h_index(array)
         final_memory, final_time = memory_and_time()
 
         # then
@@ -26,7 +26,7 @@ class HIndexTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        h_index(array)
+        result = h_index(array)
         final_memory, final_time = memory_and_time()
 
         # then
@@ -40,7 +40,7 @@ class HIndexTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        h_index(array)
+        result = h_index(array)
         final_memory, final_time = memory_and_time()
 
         # then

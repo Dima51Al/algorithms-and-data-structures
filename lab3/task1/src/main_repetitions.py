@@ -35,6 +35,7 @@ def randomize_quicksort(array, left, right):
         grow_then, less_then = partition(array, left, right)
         randomize_quicksort(array, left, less_then - 1)
         randomize_quicksort(array, grow_then + 1, right)
+    return array
 
 
 if __name__ == '__main__':

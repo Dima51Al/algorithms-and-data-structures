@@ -13,7 +13,7 @@ class DotsTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        main(segment_array, k)
+        result = main(segment_array, k)
         final_memory, final_time = memory_and_time()
 
         # then

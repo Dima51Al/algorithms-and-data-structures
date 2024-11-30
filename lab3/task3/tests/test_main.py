@@ -12,10 +12,11 @@ class PugaloTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        self.assertEqual(pugalo(array, arm_len), False)
+        result = pugalo(array, arm_len)
         final_memory, final_time = memory_and_time()
 
         # then
+        self.assertEqual(result, False)
         self.assertLessEqual(final_time - start_time, 2)
         self.assertLessEqual(final_memory - start_memory, 256)
 
@@ -27,8 +28,8 @@ class PugaloTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        pugalo(array, arm_len)
-        self.assertEqual(pugalo(array, arm_len), False)
+        result = pugalo(array, arm_len)
+        self.assertEqual(result, False)
         final_memory, final_time = memory_and_time()
 
         # then
@@ -43,8 +44,8 @@ class PugaloTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        pugalo(array, arm_len)
-        self.assertEqual(pugalo(array, arm_len), False)
+        result = pugalo(array, arm_len)
+        self.assertEqual(result, False)
         final_memory, final_time = memory_and_time()
 
         # then

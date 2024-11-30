@@ -12,8 +12,8 @@ class QuickSortTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        randomize_quicksort(array, 0, len(array)-1)
-        self.assertEqual(array, sorted(array))
+        result = randomize_quicksort(array, 0, len(array)-1)
+        self.assertEqual(result, sorted(array))
         final_memory, final_time = memory_and_time()
 
         # then
@@ -27,8 +27,8 @@ class QuickSortTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        randomize_quicksort(array, 0, len(array)-1)
-        self.assertEqual(array, sorted(array))
+        result = randomize_quicksort(array, 0, len(array)-1)
+        self.assertEqual(result, sorted(array))
         final_memory, final_time = memory_and_time()
 
         # then
@@ -42,8 +42,8 @@ class QuickSortTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        randomize_quicksort(array, 0, len(array)-1)
-        self.assertEqual(array, sorted(array))
+        result = randomize_quicksort(array, 0, len(array)-1)
+        self.assertEqual(result, sorted(array))
         final_memory, final_time = memory_and_time()
 
         # then
@@ -72,8 +72,8 @@ class QuickSortTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        randomize_quicksort(array, 0, len(array)-1)
-        self.assertEqual(array, sorted(array))
+        result = randomize_quicksort(array, 0, len(array)-1)
+        self.assertEqual(result, sorted(array))
         final_memory, final_time = memory_and_time()
 
         # then
@@ -87,8 +87,8 @@ class QuickSortTestCase(unittest.TestCase):
 
         # when
         start_memory, start_time = memory_and_time()
-        randomize_quicksort(array, 0, len(array)-1)
-        self.assertEqual(array, sorted(array))
+        result = randomize_quicksort(array, 0, len(array)-1)
+        self.assertEqual(result, sorted(array))
         final_memory, final_time = memory_and_time()
 
         # then
