@@ -16,10 +16,11 @@ def run_all_src_files():
                         if file.endswith(".py") and file != "__init__.py":
                             file_path = os.path.join(root, file)
                             path_array = file_path.split("\\")
-                            print('----------------------')
-                            print(f"Launched {path_array[-3]}:")
+                            print('v----------------------v')
+                            print(f"Launched {path_array[-3]} ✅")
                             subprocess.run(["python", file_path])
-                            print('----------------------')
+                            print('^----------------------^')
+                            print("\n\n\n")
 
 
 if __name__ == "__main__":

@@ -43,3 +43,4 @@ if __name__ == '__main__':
         read_func(read_file_line(path_input, i+1))
 
     write_file(path_output, normVid(answer_array))
+    print(normVid(answer_array))

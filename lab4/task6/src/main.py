@@ -19,14 +19,12 @@ def take_from_queue_with_min(queue: list):
     if queue[2] == 0:
         queue[1] = min_max(queue[3:], 1)[0]
 
-
     queue[0] = queue[0] + 1
 
     return answer
 
 
 def put_to_queue_with_min(queue: list[int], elem):
-
     queue.append(elem)
 
     if elem < queue[1]:
@@ -41,10 +39,8 @@ def min_from_queue(queue):
     return queue[1]
 
 
-
 def init_queue_with_min():
-
-    return [1, 2*10**9, 1]
+    return [1, 2 * 10 ** 9, 1]
 
 
 if __name__ == '__main__':
@@ -70,6 +66,7 @@ if __name__ == '__main__':
     count_of_strings = int(read_file_line(path_input, 0))
 
     for i in range(count_of_strings):
-        read_func(read_file_line(path_input, i+1))
+        read_func(read_file_line(path_input, i + 1))
 
     write_file(path_output, normVid(answer_array))
+    print(normVid(answer_array))

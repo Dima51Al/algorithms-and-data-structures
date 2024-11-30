@@ -44,6 +44,6 @@ if __name__ == '__main__':
     array = read_file_line(path_input, 1).split()
     answer = postfix(array)
     write_file(path_output, str(answer))
-
+    print(answer)
 
 

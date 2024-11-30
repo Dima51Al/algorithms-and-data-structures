@@ -70,5 +70,6 @@ if __name__ == '__main__':
         answer_array.append(correct_answer(tmp_answer))
 
     write_file(path_output, vertical_norm_view(answer_array))
+    print(vertical_norm_view(answer_array))
 
 
