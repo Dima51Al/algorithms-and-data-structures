@@ -23,7 +23,7 @@ def remove_cache():
 
 def run_tests(start_dir):
     loader = unittest.TestLoader()
-    tests = loader.discover(start_dir=start_dir, pattern="*test.py")
+    tests = loader.discover(start_dir=start_dir, pattern="*test_main.py")
     test_suite = unittest.TestSuite(tests)
     runner = unittest.TextTestRunner(verbosity=2, buffer=True)
     runner.run(test_suite)
