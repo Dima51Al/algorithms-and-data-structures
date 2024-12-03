@@ -146,22 +146,26 @@ def main(array: list[list], S):
     while milisec < 10**5:
 
         if INDEX < len(array):
+
+
             elem = array[INDEX]
 
-        if elem[0] == milisec:
-
-            queue.push(elem[1])
-            if queue.length_queue == 1:
-                queue.init_after_start(milisec)
-            INDEX += 1
+            while elem[0] == milisec and INDEX < len(array):
+                elem = array[INDEX]
+                queue.push(elem[1])
+                if queue.length_queue == 1:
+                    queue.init_after_start(milisec)
+                INDEX += 1
 
 
         if queue.first is None:
             return
 
-        if milisec == queue.first.finish:
+        while milisec == queue.first.finish:
             queue.pop()
             queue.init_after_start(milisec)
+            if queue.first is None:
+                return
 
         milisec += 1
 
