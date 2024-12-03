@@ -42,6 +42,7 @@ def main():
 
     write_file(str(merge_sort(array, 0, len(array))))
 
+
 if __name__ == '__main__':
     main()
 
