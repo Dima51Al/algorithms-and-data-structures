@@ -29,7 +29,6 @@ class QueueModified:
 
     queue_array: set[Elem] = set()
 
-    last: Elem = None
     first: Elem = None
     length_queue = 0
     operations = 0
@@ -39,69 +38,84 @@ class QueueModified:
         return self.length_queue == 0
 
 
-    def enqueue(self, array):
-        """array [1, 2, 3, 4, 5, 6, 7]"""
-        for queue_elem in array:
+    def enqueue(self, *args):
+
+        for adding_element_value in args:
+
             if self.isEmpty():
 
-                elem = self.Elem(None, queue_elem, None, self.operations)
-
-                self.first = elem
+                elem = self.Elem(None, adding_element_value, None, self.operations)
                 self.queue_array.add(elem)
+                self.first = elem
+
 
             else:
 
+                checking_elem = self.first
 
-                elem = self.Elem(self.last, queue_elem, None, self.operations)
-                self.last.right = elem
+                if adding_element_value < self.first.value:
+                    elem = self.Elem(None, adding_element_value, self.first, self.operations)
+                    self.queue_array.add(elem)
+
+                    self.first.left = elem
+                    self.first = elem
+
+                    self.length_queue += 1
+                    self.operations += 1
+                    self.operations_array.append(elem)
+
+                    continue
+
+                while (adding_element_value > checking_elem.value) and (checking_elem.right is not None):
+                    checking_elem = checking_elem.right
+
+                elem = self.Elem(checking_elem, adding_element_value, checking_elem.right, self.operations)
                 self.queue_array.add(elem)
+                checking_elem.right = elem
 
-            self.last = elem
+
             self.length_queue += 1
-
             self.operations += 1
             self.operations_array.append(elem)
 
 
-    def __init__(self, array):
-        for queue_elem in array:
-            self.enqueue(queue_elem)
+    def __init__(self, arr=None):
+        if arr is None:
+            arr = []
+
+        for elem in arr:
+            self.enqueue(elem)
+
 
 
     def get_array(self) -> list:
-        array = []
+        arr = []
         if self.isEmpty():
-            return array
+            return arr
 
         elem = self.first
+
         while elem.right is not None:
-            array.append(elem.value)
+            arr.append(elem.value)
             elem = elem.right
-        array.append(elem.value)
-        return array
+
+        arr.append(elem.value)
+
+        return arr
 
     def get_min(self):
+
         self.operations += 1
         self.operations_array.append(None)
+
 
         if self.isEmpty():
             return "*"
 
-        elem = self.first
-        answer_elem = elem
 
-        while elem.right is not None:
-            if answer_elem.value > elem.right.value:
-                answer_elem = elem.right
-            elem = elem.right
+        answer_elem = self.first
 
-        if answer_elem.left is not None:
-            answer_elem.left.right = answer_elem.right
-        if answer_elem.right is not None:
-            answer_elem.right.left = answer_elem.left
-
-        if answer_elem is self.first:
-            self.first = self.first.right
+        self.first = self.first.right
 
         self.queue_array.remove(answer_elem)
         self.length_queue -= 1
@@ -113,20 +127,7 @@ class QueueModified:
 
 
     def queue_info(self):
-        self.first.info("first:\n")
-        self.last.info("last:\n")
-
-        print("\nvalues:")
         print(self.get_array())
-
-
-        print("\n\nelements (left, value, right):")
-        queue_elem = self.first
-
-
-        while queue_elem is not None:
-            queue_elem.info()
-            queue_elem = queue_elem.right
 
 
     def D(self, x, y):
@@ -145,18 +146,20 @@ def main(array: list[str]):
     D x y is 'заменить значение элемента, добавленного в очередь
 операцией A в строке входного файла номер x + 1, на y'
     """
-    queue = QueueModified([])
+    queue = QueueModified()
     answer = []
     for operand in array:
         if "A" in operand:
             value = int(operand.split()[1])
-            queue.enqueue([value])
+            queue.enqueue(value)
         elif "D" in operand:
             x = int(operand.split()[1])
             y = int(operand.split()[2])
             queue.D(x, y)
         elif "X" in operand:
             answer.append(queue.get_min())
+
+
 
     return answer
 
