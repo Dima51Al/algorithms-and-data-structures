@@ -148,7 +148,6 @@ def main(array: list[list], S):
         if INDEX < len(array):
             elem = array[INDEX]
 
-
         if elem[0] == milisec:
 
             queue.push(elem[1])
@@ -156,6 +155,9 @@ def main(array: list[list], S):
                 queue.init_after_start(milisec)
             INDEX += 1
 
+
+        if queue.first is None:
+            return
 
         if milisec == queue.first.finish:
             queue.pop()
@@ -167,3 +169,7 @@ def main(array: list[list], S):
 if __name__ == '__main__':
     array = [[i, 2] for i in range(6)]
     main(array, 3)
+
+    array = [[0, 0], [0, 0]]
+    main(array, 1)
+
