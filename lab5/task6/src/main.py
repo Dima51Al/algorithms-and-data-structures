@@ -1,0 +1,177 @@
+import os
+
+
+class QueueModified:
+    class Elem:
+        left = None
+        value = None
+        right = None
+        index_of_operation = None
+
+        def __init__(self, left, value, right, index_of_operation):
+            self.left = left
+            self.value = value
+            self.right = right
+            self.index_of_operation = index_of_operation
+
+        def info(self, string=""):
+            print(string, end="")
+            if not (self.left is None):
+                print(self.left.value, end=" ")
+            else:
+                print("-", end=" ")
+            print(self.value, end=" ")
+
+            if not (self.right is None):
+                print(self.right.value)
+            else:
+                print("-")
+
+    queue_array: set[Elem] = set()
+
+    last: Elem = None
+    first: Elem = None
+    length_queue = 0
+    operations = 0
+    operations_array = []
+
+    def isEmpty(self) -> bool:
+        return self.length_queue == 0
+
+
+    def enqueue(self, array):
+        """array [1, 2, 3, 4, 5, 6, 7]"""
+        for queue_elem in array:
+            if self.isEmpty():
+
+                elem = self.Elem(None, queue_elem, None, self.operations)
+
+                self.first = elem
+                self.queue_array.add(elem)
+
+            else:
+
+
+                elem = self.Elem(self.last, queue_elem, None, self.operations)
+                self.last.right = elem
+                self.queue_array.add(elem)
+
+            self.last = elem
+            self.length_queue += 1
+
+            self.operations += 1
+            self.operations_array.append(elem)
+
+
+    def __init__(self, array):
+        for queue_elem in array:
+            self.enqueue(queue_elem)
+
+
+    def get_array(self) -> list:
+        array = []
+        if self.isEmpty():
+            return array
+
+        elem = self.first
+        while elem.right is not None:
+            array.append(elem.value)
+            elem = elem.right
+        array.append(elem.value)
+        return array
+
+    def get_min(self):
+        self.operations += 1
+        self.operations_array.append(None)
+
+        if self.isEmpty():
+            return "*"
+
+        elem = self.first
+        answer_elem = elem
+
+        while elem.right is not None:
+            if answer_elem.value > elem.right.value:
+                answer_elem = elem.right
+            elem = elem.right
+
+        if answer_elem.left is not None:
+            answer_elem.left.right = answer_elem.right
+        if answer_elem.right is not None:
+            answer_elem.right.left = answer_elem.left
+
+        if answer_elem is self.first:
+            self.first = self.first.right
+
+        self.queue_array.remove(answer_elem)
+        self.length_queue -= 1
+
+
+        return answer_elem.value
+
+
+
+
+    def queue_info(self):
+        self.first.info("first:\n")
+        self.last.info("last:\n")
+
+        print("\nvalues:")
+        print(self.get_array())
+
+
+        print("\n\nelements (left, value, right):")
+        queue_elem = self.first
+
+
+        while queue_elem is not None:
+            queue_elem.info()
+            queue_elem = queue_elem.right
+
+
+    def D(self, x, y):
+
+        self.operations_array[x+1].value = int(y)
+
+        self.operations += 1
+        self.operations_array.append(None)
+
+
+def main(array: list[str]):
+    """
+    array ['A 1', 'A 2', ... , 'D 2 1', 'X']
+    A x is enqueue x
+    X is get_min
+    D x y is 'заменить значение элемента, добавленного в очередь
+операцией A в строке входного файла номер x + 1, на y'
+    """
+    queue = QueueModified([])
+    answer = []
+    for operand in array:
+        if "A" in operand:
+            value = int(operand.split()[1])
+            queue.enqueue([value])
+        elif "D" in operand:
+            x = int(operand.split()[1])
+            y = int(operand.split()[2])
+            queue.D(x, y)
+        elif "X" in operand:
+            answer.append(queue.get_min())
+
+    return answer
+
+
+
+if __name__ == '__main__':
+    path_input = os.path.join(os.path.dirname(__file__), '..', 'txtf', 'input.txt')
+    path_output = os.path.join(os.path.dirname(__file__), '..', 'txtf', 'output.txt')
+
+    from lab5.utils import read_file_line, vertical_norm_view, write_file
+    num = int(read_file_line(path_input, 0))
+    array = []
+
+    for i in range(num):
+        array.append(read_file_line(path_input, i + 1))
+
+
+    write_file(path_output, vertical_norm_view(main(array)))
