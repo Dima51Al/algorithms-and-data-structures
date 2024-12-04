@@ -1,3 +1,6 @@
+import os
+
+
 def swap(array, i, j):
     array[i], array[j] = array[j], array[i]
 
@@ -45,6 +48,7 @@ class QueueModified:
 
         right = None
 
+        count_of_heartbroken = 0
 
         def __init__(self, left, duration, right):
             self.left = left
@@ -61,14 +65,19 @@ class QueueModified:
     queue_limit = 10 ** 6
     length_queue = 0
 
+    def minus_heart(self):
+        self.first.count_of_heartbroken -= 1
+
+    def set_limit(self, limit=10**6):
+        self.queue_limit = limit
 
     def isEmpty(self) -> bool:
         return self.length_queue == 0
 
     def push(self, duration):
-
-        if self.length_queue >= self.queue_limit:
-            return
+        a = False
+        if self.length_queue == self.queue_limit:
+            a = True
 
         elem = self.Elem(None, duration, None)
 
@@ -83,10 +92,10 @@ class QueueModified:
             self.last = elem
             self.queue_array.add(elem)
 
+        if a:
+            self.last.count_of_heartbroken += 1
+
         self.length_queue += 1
-
-
-
 
     def __init__(self, arr=None):
         if arr is None:
@@ -101,14 +110,17 @@ class QueueModified:
             return
 
         if self.length_queue == 1:
-
             answer = self.first.start
+
+            if self.first.count_of_heartbroken != 0:
+                self.minus_heart()
+                return -1
+
             self.queue_array.remove(self.first)
             self.length_queue -= 1
             self.last = None
             self.first = None
 
-            print(answer)
 
             return answer
 
@@ -116,12 +128,15 @@ class QueueModified:
 
         answer = self.first.start
 
+        if self.first.count_of_heartbroken != 0:
+            self.minus_heart()
+            return -1
+
         self.first = self.first.right
         self.queue_array.remove(self.first.left)
         self.first.left = None
         self.length_queue -= 1
 
-        print(answer)
         return answer
 
     def init_after_start(self, msec):
@@ -132,24 +147,29 @@ class QueueModified:
 
 
 def main(array: list[list], S):
+    answer_array_main = []
+
     sort_double_array(array)
 
     if len(array) == 0:
         return
 
     queue = QueueModified()
-    queue.limit_queue = S
+    queue.set_limit(S)
 
     INDEX = 0
     milisec = 0
 
-    while milisec < 10**5:
+    while milisec < 10 ** 7:
+
+        while (queue.first is not None) and (milisec == queue.first.finish):
+            answer_array_main.append(queue.pop())
+            queue.init_after_start(milisec)
+            if queue.first is None:
+                break
 
         if INDEX < len(array):
-
-
             elem = array[INDEX]
-
             while elem[0] == milisec and INDEX < len(array):
                 elem = array[INDEX]
                 queue.push(elem[1])
@@ -158,22 +178,30 @@ def main(array: list[list], S):
                 INDEX += 1
 
 
-        if queue.first is None:
-            return
-
-        while milisec == queue.first.finish:
-            queue.pop()
+        while (queue.first is not None) and (milisec == queue.first.finish):
+            answer_array_main.append(queue.pop())
             queue.init_after_start(milisec)
             if queue.first is None:
-                return
+                break
+
 
         milisec += 1
+    return answer_array_main
+
+
+
 
 
 if __name__ == '__main__':
-    array = [[i, 2] for i in range(6)]
-    main(array, 3)
+    from lab5.utils import read_file_line, write_file
 
-    array = [[0, 0], [0, 0]]
-    main(array, 1)
+    path_input = os.path.join(os.path.dirname(__file__), '..', 'txtf', 'input.txt')
+    path_output = os.path.join(os.path.dirname(__file__), '..', 'txtf', 'output.txt')
+
+    S, n = list(map(int, read_file_line(path_input, 0).split()))
+
+    array = [list(map(int, read_file_line(path_input, i+1).split())) for i in range(n)]
+    answer_array = main(array, S)
+
+    write_file(path_output, str(answer_array))
 
