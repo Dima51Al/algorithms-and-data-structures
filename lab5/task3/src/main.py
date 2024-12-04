@@ -173,6 +173,9 @@ def decoder(arr1: list, array: list):
 
 
 def main(array: list[list], S):
+    """input ([[0, 0],[0, 1],[1, 1]], buffer)
+    output [1, 2, -, 4] - start_time"""
+
     answer_array_main = []
 
     sort_double_array(array)
