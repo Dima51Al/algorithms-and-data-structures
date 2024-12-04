@@ -1,33 +1,44 @@
 import os
 import subprocess
 
-def run_all_src_files():
-    project_root = os.path.abspath(os.path.join(os.getcwd(), '..'))
-    for task in os.listdir(os.getcwd()):
-        task_path = os.path.join(os.getcwd(), task)
 
-        if os.path.isdir(task_path):
-            src_dir = os.path.join(task_path, 'src')
+def run_tasks():
 
-            if os.path.isdir(src_dir):
-                for root, dirs, files in os.walk(src_dir):
-                    for file in files:
-                        if file.endswith(".py") and file != "__init__.py":
-                            file_path = os.path.join(root, file)
-                            path_array = file_path.split("\\")
-                            print('v----------------------v')
-                            print(f"Launched {path_array[-3]} ✅")
+    for task_folder in sorted(os.listdir(os.curdir)):
+        src_path = os.path.join(task_folder, "src", "main.py")
+        input_path = os.path.join(task_folder, "txtf", "input.txt")
+        output_path = os.path.join(task_folder, "txtf", "output.txt")
+
+        if os.path.isdir(task_folder) and os.path.exists(src_path):
+            print("="*27)
+            print(task_folder)
+            print()
 
 
-                            subprocess.run(
-                                ["python", file_path],
-                                cwd=project_root,
-                                env={**os.environ, "PYTHONPATH": project_root}
-                            )
+            if os.path.exists(input_path):
+                with open(input_path, 'r') as file:
+                    input_data = file.read()
 
-                            print('^----------------------^')
-                            print("\n\n\n")
+                print(f"input.txt ({task_folder}):")
+                print(input_data.strip())
+            else:
+                print("файл не найден.")
+                continue
+
+            subprocess.run(
+                ["py", src_path]
+            )
+
+
+
+            if os.path.exists(output_path):
+                with open(output_path, 'r') as file:
+                    expected_output = file.read()
+                print(f"output.txt ({task_folder}):")
+                print(expected_output.strip())
+            else:
+                print(f"файл не найден.")
 
 
 if __name__ == "__main__":
-    run_all_src_files()
+    run_tasks()
