@@ -6,7 +6,7 @@
 
 ## Задание 
 
-![img.png](img.png)
+![img.png](../media/task1_img.png)
 
 ## Ограничения по времени и памяти
 

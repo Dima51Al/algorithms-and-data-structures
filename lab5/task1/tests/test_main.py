@@ -1,5 +1,5 @@
 import unittest
-from lab5.task1.src.main import main, is_heap
+from lab5.task1.src.main import is_heap
 from lab5.utils import memory_and_time, random_array
 
 
@@ -45,7 +45,7 @@ class IsHeapTestCase(unittest.TestCase):
         # when
         start_memory, start_time = memory_and_time()
 
-        result = main(array)
+        result = is_heap(array)
 
         final_memory, final_time = memory_and_time()
 

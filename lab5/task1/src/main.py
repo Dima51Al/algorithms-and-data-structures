@@ -10,11 +10,7 @@ def is_heap(array: list) -> bool:
     return True
 
 
-def main(array) -> str:
 
-    if is_heap(array):
-        return "YES"
-    return "NO"
 
 
 if __name__ == '__main__':
@@ -26,6 +22,6 @@ if __name__ == '__main__':
     array = read_file_line(path_input, 0).split()
     array = list(map(int, array))
 
-    answer = main(array)
+    answer = "YES" if is_heap(array) else "NO"
 
     write_file(path_output, answer)

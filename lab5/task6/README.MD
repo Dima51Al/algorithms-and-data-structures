@@ -6,8 +6,8 @@
 
 ## Задание 
 
-![img_1.png](img_1.png)
-![img_2.png](img_2.png)
+![img_1.png](../media/task6_img_1.png)
+![img_2.png](../media/task6_img_2.png)
 
 ## Ограничения по времени и памяти
 
