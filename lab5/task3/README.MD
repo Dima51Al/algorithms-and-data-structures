@@ -6,8 +6,8 @@
 
 ## Задание 
 
-![img.png](img.png)
-![img_1.png](img_1.png)
+![img.png](../media/task3_img.png)
+![img_1.png](../media/task3_img_1.png)
 ## Ограничения по времени и памяти
 
 - Ограничение по времени. 10 сек.

@@ -20,4 +20,4 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        pylint lab3/**/*.py lab4/**/*.py
+        pylint lab3/**/*.py lab4/**/*.py lab5/**/*.py
