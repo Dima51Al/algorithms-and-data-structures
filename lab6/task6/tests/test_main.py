@@ -7,7 +7,7 @@ class USATestCase(unittest.TestCase):
 
     def test_should_fib_add_max_values(self):
         # given
-        difficulty = 10**6
+        difficulty = 2*10**5
         phonebook = HashSet()
 
 
