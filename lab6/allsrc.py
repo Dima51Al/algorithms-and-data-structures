@@ -34,7 +34,6 @@ def run_tasks():
                 ["py", src_path],
                 cwd=project_root,
                 env={**os.environ, "PYTHONPATH": project_root}
-
             )
 
 
