@@ -36,8 +36,8 @@ def create_lab_structure(N, array):
 
 
 if __name__ == '__main__':
-    N = 6
-    array = [1, 2, 3, 4, 5]
+    N = 7
+    array = [1, 2, 4, 6]
     inp = input(f"Создание {array}, Напишите абракадабра: ")
     if inp == "абракадабра":
         create_lab_structure(N, array)
